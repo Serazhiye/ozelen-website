@@ -11,14 +11,14 @@ export function ServicesGrid() {
       <Container>
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <SectionHeading
-            eyebrow="What we do"
-            title="Full-service green infrastructure, engineered end to end."
-            intro="Eight integrated disciplines, delivered by one accountable team — from master planning and construction to long-term stewardship."
+            eyebrow="Чем мы занимаемся"
+            title="Зелёная инфраструктура полного цикла, инженерно рассчитанная от и до."
+            intro="Восемь интегрированных дисциплин от одной ответственной команды — от мастер-планирования и строительства до долгосрочного обслуживания."
             className="max-w-2xl"
           />
           <div className="shrink-0">
             <Button href="/services" variant="secondary" withArrow>
-              All Services
+              Все услуги
             </Button>
           </div>
         </div>

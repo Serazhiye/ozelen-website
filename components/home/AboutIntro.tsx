@@ -5,9 +5,9 @@ import { Reveal } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const pillars = [
-  { title: "Mission", body: "To engineer the green infrastructure that makes cities cooler, healthier and more resilient." },
-  { title: "Vision", body: "A generation of cities where nature and infrastructure are designed as one system." },
-  { title: "Values", body: "Precision, stewardship and integrity on every project, at every scale." },
+  { title: "Миссия", body: "Создавать зелёную инфраструктуру, делающую города прохладнее, здоровее и устойчивее." },
+  { title: "Видение", body: "Поколение городов, где природа и инфраструктура спроектированы как единая система." },
+  { title: "Ценности", body: "Точность, забота и честность на каждом проекте и в любом масштабе." },
 ];
 
 export function AboutIntro() {
@@ -18,9 +18,9 @@ export function AboutIntro() {
           {/* Left: copy */}
           <div className="lg:col-span-6">
             <SectionHeading
-              eyebrow="Who we are"
-              title="A landscape contractor with the discipline of an engineering firm."
-              intro="For nearly two decades, GreenSphere has delivered the parks, boulevards and green systems that shape how cities feel — combining landscape craft with civil-engineering rigour."
+              eyebrow="Кто мы"
+              title="Ландшафтный подрядчик с дисциплиной инженерной компании."
+              intro="Почти два десятилетия Nord Botanic создаёт парки, бульвары и зелёные системы, определяющие облик городов, — сочетая ландшафтное мастерство со строгостью гражданской инженерии."
             />
 
             <Reveal delay={0.15}>
@@ -40,7 +40,7 @@ export function AboutIntro() {
             <Reveal delay={0.2}>
               <div className="mt-10">
                 <Button href="/about" variant="secondary" withArrow>
-                  Read More About Us
+                  Подробнее о компании
                 </Button>
               </div>
             </Reveal>
@@ -49,10 +49,10 @@ export function AboutIntro() {
           {/* Right: image + inset stat */}
           <div className="lg:col-span-6">
             <Reveal delay={0.1} className="relative">
-              <Placeholder label="Team on Site" ratio="portrait" rounded="rounded-4xl" />
+              <Placeholder label="Команда на объекте" ratio="portrait" rounded="rounded-4xl" />
               <div className="absolute -bottom-6 -left-6 hidden rounded-3xl border border-forest-900/8 bg-paper p-7 shadow-lift sm:block">
                 <p className="text-4xl font-semibold tracking-tight text-forest-800">18</p>
-                <p className="mt-1 max-w-[9rem] text-sm text-ink/55">Years engineering greener cities</p>
+                <p className="mt-1 max-w-[9rem] text-sm text-ink/55">лет создаём зелёные города</p>
               </div>
             </Reveal>
           </div>

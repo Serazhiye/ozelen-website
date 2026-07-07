@@ -80,15 +80,15 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col gap-4 border-t border-sand-100/10 pt-8 text-xs text-sand-100/40 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {site.legalName}. All rights reserved.
+            © {year} {site.legalName}. Все права защищены.
           </p>
           <p className="tracking-wide">{site.tagline}</p>
           <div className="flex gap-6">
             <Link href="/contact" className="transition-colors hover:text-sand-50">
-              Privacy
+              Конфиденциальность
             </Link>
             <Link href="/contact" className="transition-colors hover:text-sand-50">
-              Terms
+              Условия
             </Link>
           </div>
         </div>

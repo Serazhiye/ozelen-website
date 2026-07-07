@@ -71,8 +71,8 @@ export function NewsExplorer() {
             type="search"
             value={query}
             onChange={(e) => reset(() => setQuery(e.target.value))}
-            placeholder="Search articles"
-            aria-label="Search articles"
+            placeholder="Поиск по прессе"
+            aria-label="Поиск по прессе"
             className="w-full rounded-full border border-forest-900/12 bg-paper py-3 pl-11 pr-4 text-sm text-ink placeholder:text-ink/40 focus:border-forest-500 focus:outline-none"
           />
         </div>
@@ -97,7 +97,7 @@ export function NewsExplorer() {
           </AnimatePresence>
         </motion.div>
       ) : (
-        <p className="mt-16 text-center text-ink/50">No articles match your search.</p>
+        <p className="mt-16 text-center text-ink/50">По вашему запросу публикаций не найдено.</p>
       )}
 
       {/* Pagination */}
@@ -108,7 +108,7 @@ export function NewsExplorer() {
               key={i}
               type="button"
               onClick={() => setPage(i + 1)}
-              aria-label={`Page ${i + 1}`}
+              aria-label={`Страница ${i + 1}`}
               aria-current={current === i + 1}
               className={cn(
                 "h-10 w-10 rounded-full text-sm font-medium transition-colors",

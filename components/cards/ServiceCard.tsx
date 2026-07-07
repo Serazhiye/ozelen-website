@@ -17,15 +17,15 @@ export function ServiceCard({ service, className }: { service: Service; classNam
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-forest-50/0 to-forest-50 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
       <div className="relative">
-        <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-forest-50 text-forest-700 transition-colors duration-500 group-hover:bg-forest-900 group-hover:text-sand-50">
-          <ServiceIcon name={service.icon} />
+        <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-forest-50 transition-colors duration-500 group-hover:bg-forest-900">
+          <ServiceIcon emoji={service.icon} className="text-3xl" />
         </span>
         <h3 className="mt-7 text-xl font-semibold tracking-tight text-ink">{service.title}</h3>
         <p className="mt-3 text-sm leading-relaxed text-ink/55">{service.excerpt}</p>
       </div>
 
       <div className="relative mt-8 flex items-center gap-2 text-sm font-medium text-forest-700">
-        <span>Explore service</span>
+        <span>Подробнее об услуге</span>
         <svg
           className="h-4 w-4 transition-transform duration-500 ease-out-expo group-hover:translate-x-1.5"
           viewBox="0 0 16 16"

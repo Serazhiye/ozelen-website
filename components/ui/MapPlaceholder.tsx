@@ -5,7 +5,7 @@ export function MapPlaceholder() {
   return (
     <div
       role="img"
-      aria-label="Map placeholder showing GreenSphere head office location"
+      aria-label="Карта расположения головного офиса Nord Botanic"
       className="placeholder-surface--dark relative aspect-[16/10] w-full overflow-hidden rounded-4xl"
     >
       {/* Abstract street network */}
@@ -40,7 +40,7 @@ export function MapPlaceholder() {
       </div>
 
       <span className="absolute bottom-4 left-4 text-[0.7rem] font-medium uppercase tracking-[0.16em] text-sand-100/50">
-        Interactive Map
+        Интерактивная карта
       </span>
     </div>
   );

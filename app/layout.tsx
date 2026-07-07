@@ -26,14 +26,17 @@ export const metadata: Metadata = {
   },
   description: site.description,
   keywords: [
-    "urban landscaping",
-    "green infrastructure",
-    "city parks",
-    "landscape construction",
-    "environmental restoration",
-    "irrigation systems",
-    "boulevard greening",
-    "tree planting",
+    "городское озеленение",
+    "зелёная инфраструктура",
+    "городские парки",
+    "ландшафтное строительство",
+    "экологическое восстановление",
+    "системы полива",
+    "озеленение бульваров",
+    "посадка деревьев",
+    "тепличный комплекс",
+    "Nord Botanic",
+    "Кокшетау",
   ],
   authors: [{ name: site.legalName }],
   openGraph: {
@@ -71,19 +74,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     address: {
       "@type": "PostalAddress",
       streetAddress: site.office.lines[0],
-      addressLocality: "Astana",
+      addressLocality: "Кокшетау",
       addressCountry: "KZ",
     },
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="ru" className={`${inter.variable} ${sora.variable}`}>
       <body className="min-h-screen bg-paper">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-forest-900 focus:px-5 focus:py-3 focus:text-sm focus:text-sand-50"
         >
-          Skip to content
+          Перейти к содержимому
         </a>
         <Navbar />
         <main id="main">{children}</main>

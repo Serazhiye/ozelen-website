@@ -9,19 +9,19 @@ import { processSteps } from "@/lib/data/company";
 import { services } from "@/lib/data/services";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Услуги",
   description:
-    "Eight integrated green-infrastructure disciplines — from urban landscaping and park construction to smart irrigation and long-term maintenance.",
+    "Восемь интегрированных дисциплин зелёной инфраструктуры — от городского озеленения и строительства парков до умного полива и обслуживания.",
 };
 
 export default function ServicesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Our services"
-        title="Green infrastructure, engineered end to end."
-        intro="Eight disciplines delivered by one accountable team — designed, built and maintained to civic-infrastructure standards."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
+        eyebrow="Наши услуги"
+        title="Зелёная инфраструктура, рассчитанная от и до."
+        intro="Восемь дисциплин от одной ответственной команды — спроектированы, построены и обслуживаются по стандартам городской инфраструктуры."
+        crumbs={[{ label: "Главная", href: "/" }, { label: "Услуги" }]}
       />
 
       <section className="bg-paper py-section">
@@ -40,9 +40,9 @@ export default function ServicesPage() {
       <section className="bg-mist py-section">
         <Container>
           <SectionHeading
-            eyebrow="How we deliver"
-            title="One methodology behind every service."
-            intro="Whatever the discipline, we follow the same disciplined path from analysis to lifelong stewardship."
+            eyebrow="Как мы работаем"
+            title="Одна методология за каждой услугой."
+            intro="Какой бы ни была дисциплина, мы идём одним дисциплинированным путём — от анализа до пожизненного обслуживания."
             className="max-w-2xl"
           />
           <RevealGroup className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

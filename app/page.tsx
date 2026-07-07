@@ -6,6 +6,7 @@ import { WhyUs } from "@/components/home/WhyUs";
 import { ProcessTimeline } from "@/components/home/ProcessTimeline";
 import { Industries } from "@/components/home/Industries";
 import { NewsPreview } from "@/components/home/NewsPreview";
+import { GreenhouseBanner } from "@/components/home/GreenhouseBanner";
 import { CTASection } from "@/components/sections/CTASection";
 import { TrustStrip } from "@/components/home/TrustStrip";
 
@@ -21,6 +22,7 @@ export default function HomePage() {
       <ProcessTimeline />
       <Industries />
       <NewsPreview />
+      <GreenhouseBanner />
       <CTASection />
     </>
   );

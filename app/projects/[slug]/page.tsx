@@ -36,15 +36,15 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         intro={project.summary}
         size="lg"
         crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Projects", href: "/projects" },
+          { label: "Главная", href: "/" },
+          { label: "Проекты", href: "/projects" },
           { label: project.title },
         ]}
         meta={[
-          { label: "Client", value: project.client },
-          { label: "Location", value: project.location },
-          { label: "Area", value: project.area },
-          { label: "Completed", value: project.year },
+          { label: "Заказчик", value: project.client },
+          { label: "Локация", value: project.location },
+          { label: "Площадь", value: project.area },
+          { label: "Завершён", value: project.year },
         ]}
       />
 
@@ -52,7 +52,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       <section className="bg-paper pt-12 lg:pt-16">
         <Container>
           <Reveal>
-            <Placeholder label={`${project.title} — Drone View`} ratio="ultrawide" rounded="rounded-4xl" />
+            <Placeholder label={`${project.title} — съёмка с дрона`} ratio="ultrawide" rounded="rounded-4xl" />
           </Reveal>
         </Container>
       </section>
@@ -62,7 +62,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         <Container>
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
-              <SectionHeading eyebrow="Overview" title="The brief and the ambition." />
+              <SectionHeading eyebrow="Обзор" title="Задание и амбиция." />
               <div className="mt-8 space-y-6">
                 {project.overview.map((para, i) => (
                   <Reveal key={i} delay={i * 0.05}>
@@ -74,7 +74,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             <div className="lg:col-span-5">
               <Reveal delay={0.1}>
                 <div className="rounded-4xl border border-forest-900/8 bg-mist p-8 lg:p-10">
-                  <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-forest-600">Objectives</h3>
+                  <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-forest-600">Задачи</h3>
                   <ul className="mt-6 space-y-4">
                     {project.objectives.map((obj) => (
                       <li key={obj} className="flex gap-3 text-sm leading-relaxed text-ink/70">
@@ -95,8 +95,8 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         <Container>
           <SectionHeading
             dark
-            eyebrow="Project statistics"
-            title="Delivered by the numbers."
+            eyebrow="Статистика проекта"
+            title="Результат в цифрах."
             className="max-w-2xl"
           />
           <RevealGroup className="mt-14 grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-4">
@@ -116,8 +116,8 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       <section className="bg-paper py-section">
         <Container>
           <SectionHeading
-            eyebrow="Challenges & solutions"
-            title="Hard problems, engineered answers."
+            eyebrow="Вызовы и решения"
+            title="Сложные задачи — инженерные ответы."
             className="max-w-2xl"
           />
           <div className="mt-14 space-y-4">
@@ -125,12 +125,12 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               <Reveal key={challenge.title} delay={i * 0.04}>
                 <div className="grid gap-6 rounded-3xl border border-forest-900/8 bg-mist p-8 md:grid-cols-2 lg:gap-12">
                   <div>
-                    <span className="text-xs font-medium uppercase tracking-[0.16em] text-ink/40">Challenge</span>
+                    <span className="text-xs font-medium uppercase tracking-[0.16em] text-ink/40">Вызов</span>
                     <h3 className="mt-3 text-lg font-semibold text-ink">{challenge.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-ink/55">{challenge.description}</p>
                   </div>
                   <div className="border-t border-forest-900/10 pt-6 md:border-l md:border-t-0 md:pl-12 md:pt-0">
-                    <span className="text-xs font-medium uppercase tracking-[0.16em] text-forest-600">Solution</span>
+                    <span className="text-xs font-medium uppercase tracking-[0.16em] text-forest-600">Решение</span>
                     <h3 className="mt-3 text-lg font-semibold text-forest-800">
                       {project.solutions[i]?.title}
                     </h3>
@@ -150,7 +150,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         <Container>
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
-              <SectionHeading eyebrow="Engineering details" title="Under the landscape." />
+              <SectionHeading eyebrow="Инженерные детали" title="Под ландшафтом." />
             </div>
             <div className="lg:col-span-8">
               <RevealGroup className="grid gap-4 sm:grid-cols-2">
@@ -176,15 +176,15 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       <section className="bg-paper py-section">
         <Container>
           <SectionHeading
-            eyebrow="Transformation"
-            title="Before & after."
-            intro="Drag the handle to compare the existing site with the completed landscape."
+            eyebrow="Трансформация"
+            title="До и после."
+            intro="Потяните ползунок, чтобы сравнить исходный участок с готовым ландшафтом."
             className="max-w-2xl"
           />
           <Reveal className="mt-14">
             <BeforeAfter
-              beforeLabel={`${project.title} — Existing Site`}
-              afterLabel={`${project.title} — Completed`}
+              beforeLabel={`${project.title} — исходный участок`}
+              afterLabel={`${project.title} — готово`}
             />
           </Reveal>
         </Container>
@@ -194,8 +194,8 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       <section className="bg-mist py-section">
         <Container>
           <SectionHeading
-            eyebrow="Construction stages"
-            title="From ground-breaking to opening day."
+            eyebrow="Этапы строительства"
+            title="От начала работ до дня открытия."
             className="max-w-2xl"
           />
           <RevealGroup className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -217,7 +217,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       {/* Gallery */}
       <section className="bg-paper py-section">
         <Container>
-          <SectionHeading eyebrow="Gallery" title="Twelve views of the project." className="max-w-2xl" />
+          <SectionHeading eyebrow="Галерея" title="Двенадцать кадров проекта." className="max-w-2xl" />
           <div className="mt-14">
             <Gallery labels={project.galleryLabels} columns={3} />
           </div>
@@ -229,7 +229,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         <Container>
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
-              <SectionHeading dark eyebrow="Outcome" title="The result." />
+              <SectionHeading dark eyebrow="Итог" title="Результат." />
             </div>
             <div className="space-y-6 lg:col-span-8">
               {project.outcome.map((para, i) => (
@@ -246,9 +246,9 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       <section className="bg-paper py-section">
         <Container>
           <div className="flex items-end justify-between gap-8">
-            <SectionHeading eyebrow="More work" title="Related projects." />
+            <SectionHeading eyebrow="Ещё работы" title="Смежные проекты." />
             <Link href="/projects" className="hidden shrink-0 text-sm font-medium text-forest-700 link-underline sm:inline-flex">
-              All projects →
+              Все проекты →
             </Link>
           </div>
           <RevealGroup className="mt-12 grid gap-8 md:grid-cols-3">

@@ -12,9 +12,9 @@ export function WhyUs() {
       <Container className="relative">
         <SectionHeading
           dark
-          eyebrow="Why GreenSphere"
-          title="Six reasons the region's most demanding clients choose us."
-          intro="We hold landscape to the same standard as any critical infrastructure — with the people, systems and accountability to prove it."
+          eyebrow="Почему Nord Botanic"
+          title="Шесть причин, по которым нас выбирают самые требовательные заказчики региона."
+          intro="Мы держим ландшафт на той же планке, что и любую критическую инфраструктуру, — с людьми, системами и ответственностью, чтобы это доказать."
           className="max-w-2xl"
         />
 

@@ -13,14 +13,14 @@ export function NewsPreview() {
       <Container>
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <SectionHeading
-            eyebrow="Newsroom"
-            title="Insight from the field."
-            intro="Engineering notes, project milestones and thinking on the future of urban green infrastructure."
+            eyebrow="Пресса"
+            title="О нас пишут СМИ."
+            intro="Публикации деловых и отраслевых изданий о проектах, экологии и достижениях Nord Botanic."
             className="max-w-2xl"
           />
           <div className="shrink-0">
             <Button href="/news" variant="secondary" withArrow>
-              All News
+              Вся пресса
             </Button>
           </div>
         </div>

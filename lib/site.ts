@@ -1,35 +1,39 @@
 /**
- * Central site configuration: company facts, contact details, and navigation.
- * Everything user-facing that is "chrome" (nav, footer, contact) reads from here
- * so the site stays consistent and is trivial to rebrand.
+ * Центральная конфигурация сайта: данные о компании, контакты и навигация.
+ * Всё «обрамление» (навигация, футер, контакты) берётся отсюда,
+ * чтобы сайт оставался единообразным и легко перенастраивался.
  */
 
 export const site = {
-  name: "GreenSphere",
-  legalName: "GreenSphere Infrastructure",
-  tagline: "Engineering Greener Cities.",
+  name: "Nord Botanic",
+  legalName: "Nord Botanic",
+  tagline: "Создаём зелёные города.",
   description:
-    "GreenSphere Infrastructure delivers city-scale landscaping and green infrastructure — parks, boulevards, irrigation and environmental restoration — for governments, developers and institutions.",
-  url: "https://greensphere.example",
+    "Nord Botanic — городское озеленение и зелёная инфраструктура: парки, бульвары, полив, экологическое восстановление и собственный тепличный комплекс для государственных, коммерческих и институциональных заказчиков.",
+  url: "https://nordbotanic.kz",
   founded: 2007,
   contact: {
     phone: "+7 (777) 123-45-67",
     phoneHref: "tel:+77771234567",
     whatsapp: "+7 (777) 123-45-67",
     whatsappHref: "https://wa.me/77771234567",
-    email: "info@greensphere.com",
-    emailHref: "mailto:info@greensphere.com",
+    email: "info@nordbotanic.kz",
+    emailHref: "mailto:info@nordbotanic.kz",
     emergency: "+7 (777) 999-00-11",
     emergencyHref: "tel:+77779990011",
   },
   office: {
-    label: "Head Office",
-    lines: ["GreenSphere Tower, 14 Prospect Avenue", "Astana 010000, Kazakhstan"],
+    label: "Головной офис",
+    lines: ["ул. Валиханова, 1/3", "Кокшетау, Акмолинская область"],
     hours: [
-      { day: "Monday – Friday", time: "08:30 – 18:30" },
-      { day: "Saturday", time: "10:00 – 15:00" },
-      { day: "Sunday", time: "Closed" },
+      { day: "Пн – Пт", time: "08:30 – 18:30" },
+      { day: "Суббота", time: "10:00 – 15:00" },
+      { day: "Воскресенье", time: "Выходной" },
     ],
+  },
+  greenhouse: {
+    label: "Тепличный комплекс",
+    lines: ["пос. Станционный", "Кокшетауская городская администрация", "Акмолинская область"],
   },
   social: [
     { label: "LinkedIn", href: "https://linkedin.com" },
@@ -45,47 +49,48 @@ export type NavItem = {
 };
 
 export const mainNav: NavItem[] = [
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "News", href: "/news" },
-  { label: "Careers", href: "/careers" },
-  { label: "Contact", href: "/contact" },
+  { label: "О компании", href: "/about" },
+  { label: "Услуги", href: "/services" },
+  { label: "Проекты", href: "/projects" },
+  { label: "Теплица", href: "/greenhouse" },
+  { label: "Пресса", href: "/news" },
+  { label: "Карьера", href: "/careers" },
+  { label: "Контакты", href: "/contact" },
 ];
 
 export const footerNav: { title: string; items: NavItem[] }[] = [
   {
-    title: "Company",
+    title: "Компания",
     items: [
-      { label: "About Us", href: "/about" },
-      { label: "Careers", href: "/careers" },
-      { label: "News", href: "/news" },
-      { label: "Contact", href: "/contact" },
+      { label: "О компании", href: "/about" },
+      { label: "Карьера", href: "/careers" },
+      { label: "Пресса", href: "/news" },
+      { label: "Контакты", href: "/contact" },
     ],
   },
   {
-    title: "Services",
+    title: "Услуги",
     items: [
-      { label: "Urban Landscaping", href: "/services/urban-landscaping" },
-      { label: "Park Construction", href: "/services/park-construction" },
-      { label: "Green Infrastructure", href: "/services/green-infrastructure" },
-      { label: "Automatic Irrigation", href: "/services/automatic-irrigation" },
+      { label: "Городское озеленение", href: "/services/urban-landscaping" },
+      { label: "Строительство парков", href: "/services/park-construction" },
+      { label: "Зелёная инфраструктура", href: "/services/green-infrastructure" },
+      { label: "Автоматический полив", href: "/services/automatic-irrigation" },
     ],
   },
   {
-    title: "Projects",
+    title: "Проекты",
     items: [
-      { label: "Central Metropolitan Park", href: "/projects/central-metropolitan-park" },
-      { label: "Capital Riverside Boulevard", href: "/projects/capital-riverside-boulevard" },
-      { label: "Airport Green Zone", href: "/projects/international-airport-green-zone" },
-      { label: "All Projects", href: "/projects" },
+      { label: "Центральный городской парк", href: "/projects/central-metropolitan-park" },
+      { label: "Столичный набережный бульвар", href: "/projects/capital-riverside-boulevard" },
+      { label: "Зелёная зона аэропорта", href: "/projects/international-airport-green-zone" },
+      { label: "Тепличный комплекс", href: "/greenhouse" },
     ],
   },
 ];
 
 export const companyStats = [
-  { value: 430, suffix: "+", label: "Completed Projects" },
-  { value: 18, suffix: " yrs", label: "Of Experience" },
-  { value: 1.2, suffix: "M", label: "Trees Planted", decimals: 1 },
-  { value: 350, suffix: "+", label: "Professionals" },
+  { value: 430, suffix: "+", label: "Реализованных проектов" },
+  { value: 18, suffix: " лет", label: "Опыта работы" },
+  { value: 1.2, suffix: " млн", label: "Высажено деревьев", decimals: 1 },
+  { value: 350, suffix: "+", label: "Специалистов" },
 ] as const;
