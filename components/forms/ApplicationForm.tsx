@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Input, Label, Select, Textarea } from "@/components/ui/Field";
-import { openPositions } from "@/lib/data/company";
+import { usePositions } from "@/components/admin/usePositions";
 
 export function ApplicationForm({ defaultRole }: { defaultRole?: string }) {
   const [submitted, setSubmitted] = useState(false);
+  const openPositions = usePositions();
 
   // Front-end only: this is a static marketing site, so we simulate submission.
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

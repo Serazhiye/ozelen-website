@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Placeholder } from "@/components/ui/Placeholder";
+import { GoogleMap } from "@/components/ui/GoogleMap";
 import { Gallery } from "@/components/sections/Gallery";
 import { CTASection } from "@/components/sections/CTASection";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
@@ -85,8 +86,8 @@ export default function GreenhousePage() {
           <RevealGroup className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {greenhouse.grows.map((item) => (
               <RevealItem key={item.label}>
-                <div className="flex h-full flex-col items-center justify-center rounded-3xl border border-forest-900/8 bg-paper p-6 text-center transition-all duration-500 ease-out-expo hover:-translate-y-1 hover:shadow-lift">
-                  <span className="text-4xl" role="img" aria-hidden="true">{item.icon}</span>
+                <div className="group flex h-full flex-col items-center justify-center rounded-3xl border border-forest-900/8 bg-paper p-6 text-center shadow-subtle transition-all duration-500 ease-out-expo hover:-translate-y-1.5 hover:shadow-lift">
+                  <span className="text-4xl transition-transform duration-500 ease-out-expo group-hover:-rotate-6 group-hover:scale-110" role="img" aria-hidden="true">{item.icon}</span>
                   <span className="mt-4 text-sm font-medium text-ink">{item.label}</span>
                 </div>
               </RevealItem>
@@ -106,8 +107,8 @@ export default function GreenhousePage() {
           <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {greenhouse.features.map((f) => (
               <RevealItem key={f.title}>
-                <div className="h-full rounded-3xl border border-forest-900/8 bg-mist p-8">
-                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-paper text-3xl shadow-subtle" role="img" aria-hidden="true">
+                <div className="group h-full rounded-3xl border border-forest-900/8 bg-mist p-8 shadow-subtle transition-all duration-500 ease-out-expo hover:-translate-y-1.5 hover:shadow-lift">
+                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-paper text-3xl shadow-subtle transition-transform duration-500 ease-out-expo group-hover:-rotate-6 group-hover:scale-105" role="img" aria-hidden="true">
                     {f.icon}
                   </span>
                   <h3 className="mt-6 text-lg font-semibold text-ink">{f.title}</h3>
@@ -173,7 +174,12 @@ export default function GreenhousePage() {
             </div>
             <div className="lg:col-span-7">
               <Reveal>
-                <Placeholder label="Тепличный комплекс — панорама" ratio="wide" rounded="rounded-4xl" />
+                <GoogleMap
+                  query="посёлок Станционный, Кокшетау, Акмолинская область, Казахстан"
+                  title="Тепличный комплекс Nord Botanic на карте Google"
+                  zoom={12}
+                  className="aspect-[16/11] w-full"
+                />
               </Reveal>
             </div>
           </div>

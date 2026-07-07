@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "./Logo";
+import { AdminTrigger } from "@/components/admin/AdminTrigger";
 import { footerNav, site } from "@/lib/site";
 
 export function Footer() {
@@ -83,14 +84,8 @@ export function Footer() {
             © {year} {site.legalName}. Все права защищены.
           </p>
           <p className="tracking-wide">{site.tagline}</p>
-          <div className="flex gap-6">
-            <Link href="/contact" className="transition-colors hover:text-sand-50">
-              Конфиденциальность
-            </Link>
-            <Link href="/contact" className="transition-colors hover:text-sand-50">
-              Условия
-            </Link>
-          </div>
+          {/* Discreet admin launcher */}
+          <AdminTrigger />
         </div>
       </Container>
     </footer>

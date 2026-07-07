@@ -1,20 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Sora } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ScrollProgress } from "@/components/motion/ScrollProgress";
+import { AdminProvider } from "@/components/admin/AdminProvider";
 import { site } from "@/lib/site";
 import "./globals.css";
 
+// Single typeface across the site (headings + body) — Inter, as before.
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
   variable: "--font-inter",
-  display: "swap",
-});
-
-const sora = Sora({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-display",
   display: "swap",
 });
 
@@ -80,7 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="ru" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="ru" className={inter.variable}>
       <body className="min-h-screen bg-paper">
         <a
           href="#main"
@@ -88,9 +84,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Перейти к содержимому
         </a>
-        <Navbar />
-        <main id="main">{children}</main>
-        <Footer />
+        <AdminProvider>
+          <ScrollProgress />
+          <Navbar />
+          <main id="main">{children}</main>
+          <Footer />
+        </AdminProvider>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}

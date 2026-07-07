@@ -4,6 +4,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Gallery } from "@/components/sections/Gallery";
 import { ApplicationForm } from "@/components/forms/ApplicationForm";
+import { CareersPositions } from "@/components/careers/CareersPositions";
 import { RevealGroup, RevealItem, Reveal } from "@/components/motion/Reveal";
 import { careerBenefits, openPositions } from "@/lib/data/company";
 
@@ -83,32 +84,7 @@ export default function CareersPage() {
             intro="Не нашли подходящую роль? Отправьте инициативную заявку ниже — мы всегда ищем выдающихся людей."
             className="max-w-2xl"
           />
-          <RevealGroup className="mt-14 divide-y divide-forest-900/10 border-y border-forest-900/10">
-            {openPositions.map((p) => (
-              <RevealItem key={p.title}>
-                <a
-                  href="#apply"
-                  className="group grid grid-cols-1 items-center gap-3 py-6 sm:grid-cols-12 sm:gap-6"
-                >
-                  <div className="sm:col-span-5">
-                    <h3 className="text-lg font-semibold text-ink transition-colors group-hover:text-forest-700">
-                      {p.title}
-                    </h3>
-                  </div>
-                  <div className="text-sm text-ink/55 sm:col-span-3">{p.department}</div>
-                  <div className="text-sm text-ink/55 sm:col-span-2">{p.location}</div>
-                  <div className="flex items-center justify-between sm:col-span-2 sm:justify-end">
-                    <span className="rounded-full bg-forest-50 px-3 py-1 text-xs font-medium text-forest-700">
-                      {p.type}
-                    </span>
-                    <svg className="ml-4 h-4 w-4 text-forest-600 transition-transform duration-500 ease-out-expo group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                </a>
-              </RevealItem>
-            ))}
-          </RevealGroup>
+          <CareersPositions />
         </Container>
       </section>
 
