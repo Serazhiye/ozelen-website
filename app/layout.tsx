@@ -1,0 +1,98 @@
+import type { Metadata, Viewport } from "next";
+import { Inter, Sora } from "next/font/google";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { site } from "@/lib/site";
+import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.legalName} — ${site.tagline}`,
+    template: `%s — ${site.legalName}`,
+  },
+  description: site.description,
+  keywords: [
+    "urban landscaping",
+    "green infrastructure",
+    "city parks",
+    "landscape construction",
+    "environmental restoration",
+    "irrigation systems",
+    "boulevard greening",
+    "tree planting",
+  ],
+  authors: [{ name: site.legalName }],
+  openGraph: {
+    type: "website",
+    title: `${site.legalName} — ${site.tagline}`,
+    description: site.description,
+    siteName: site.legalName,
+    url: site.url,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.legalName} — ${site.tagline}`,
+    description: site.description,
+  },
+  robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#06120C",
+  width: "device-width",
+  initialScale: 1,
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: site.legalName,
+    description: site.description,
+    url: site.url,
+    slogan: site.tagline,
+    foundingDate: String(site.founded),
+    telephone: site.contact.phone,
+    email: site.contact.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: site.office.lines[0],
+      addressLocality: "Astana",
+      addressCountry: "KZ",
+    },
+  };
+
+  return (
+    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
+      <body className="min-h-screen bg-paper">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-forest-900 focus:px-5 focus:py-3 focus:text-sm focus:text-sand-50"
+        >
+          Skip to content
+        </a>
+        <Navbar />
+        <main id="main">{children}</main>
+        <Footer />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+      </body>
+    </html>
+  );
+}

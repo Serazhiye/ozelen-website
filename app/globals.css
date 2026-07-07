@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: "Inter", system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-forest-100/60;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: "ss01", "cv01", "cv03";
+  }
+
+  /* Respect reduced motion globally */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  ::selection {
+    background-color: theme("colors.forest.900");
+    color: theme("colors.sand.100");
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.forest.600");
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-8xl px-6 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 text-xs font-medium uppercase tracking-[0.22em] text-forest-600;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-8 bg-forest-400/70;
+  }
+
+  /* Elegant premium placeholder surface — preserves final layout */
+  .placeholder-surface {
+    background-color: theme("colors.mist");
+    background-image:
+      radial-gradient(120% 120% at 15% 10%, rgba(31, 81, 58, 0.10) 0%, transparent 55%),
+      radial-gradient(100% 100% at 85% 90%, rgba(176, 141, 78, 0.10) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(12, 18, 16, 0.03) 0%, rgba(12, 18, 16, 0.06) 100%);
+  }
+
+  .placeholder-surface--dark {
+    background-color: theme("colors.forest.900");
+    background-image:
+      radial-gradient(120% 120% at 15% 10%, rgba(46, 106, 76, 0.35) 0%, transparent 55%),
+      radial-gradient(100% 100% at 85% 90%, rgba(176, 141, 78, 0.18) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.25) 100%);
+  }
+
+  .hairline {
+    @apply border-t border-forest-100;
+  }
+
+  .link-underline {
+    @apply relative inline-flex items-center;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-px w-0 bg-current transition-all duration-500 ease-out-expo;
+  }
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .mask-fade-r {
+    -webkit-mask-image: linear-gradient(to right, black 82%, transparent 100%);
+    mask-image: linear-gradient(to right, black 82%, transparent 100%);
+  }
+}
