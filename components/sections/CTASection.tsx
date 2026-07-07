@@ -11,9 +11,9 @@ type CTASectionProps = {
 
 /** Large premium closing CTA reused on Home, Service and Project pages. */
 export function CTASection({
-  eyebrow = "Start a project",
-  title = "Let's build the next green landmark together.",
-  intro = "Tell us about your site, your brief and your ambitions. Our team will respond within one business day.",
+  eyebrow = "Начать проект",
+  title = "Построим следующий зелёный ориентир вместе.",
+  intro = "Расскажите о вашем участке, задании и амбициях. Наша команда ответит в течение одного рабочего дня.",
 }: CTASectionProps) {
   return (
     <section className="bg-paper">
@@ -36,7 +36,7 @@ export function CTASection({
             <Reveal delay={0.15}>
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Button href="/contact" variant="light" size="lg" withArrow>
-                  Request Consultation
+                  Заказать консультацию
                 </Button>
                 <Button href={site.contact.whatsappHref} external variant="secondary" size="lg" className="border-sand-100/25 text-sand-50 hover:border-sand-100/50 hover:bg-white/5">
                   WhatsApp

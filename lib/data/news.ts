@@ -1,114 +1,121 @@
 export type Article = {
+  /** Идентификатор для React-ключа */
   slug: string;
   title: string;
   category: string;
   date: string;
-  readTime: string;
+  /** Издание / источник публикации */
+  source: string;
+  /** Внешняя ссылка на публикацию в СМИ */
+  url: string;
   excerpt: string;
-  author: string;
   featured?: boolean;
 };
 
 export const newsCategories = [
-  "All",
-  "Projects",
-  "Sustainability",
-  "Company",
-  "Engineering",
-  "Awards",
+  "Все",
+  "Проекты",
+  "Экология",
+  "Компания",
+  "Награды",
+  "Интервью",
 ] as const;
 
+/**
+ * Внешняя пресса о компании — публикации сторонних СМИ о Nord Botanic.
+ * Ссылки ведут на издания-источники (открываются в новой вкладке).
+ */
 export const articles: Article[] = [
   {
-    slug: "central-metropolitan-park-opens",
-    title: "Central Metropolitan Park opens to four million annual visitors",
-    category: "Projects",
-    date: "June 18, 2026",
-    readTime: "6 min read",
-    author: "GreenSphere Newsroom",
+    slug: "forbes-central-park",
+    title: "Как Nord Botanic превратил бывшую станцию в крупнейший парк столицы",
+    category: "Проекты",
+    date: "18 июня 2026",
+    source: "Forbes Kazakhstan",
+    url: "https://forbes.kz",
     featured: true,
     excerpt:
-      "Our largest single park to date reclaims 42 hectares of former rail land as a new civic and ecological heart for the capital — here is how it came together.",
+      "Издание разбирает, как подрядчик реализовал 42-гектарный парк на месте заброшенных железнодорожных земель — от рекультивации грунта до 90 000 деревьев и кустарников.",
   },
   {
-    slug: "engineering-street-trees-that-survive",
-    title: "Engineering street trees that actually survive the city",
-    category: "Engineering",
-    date: "May 30, 2026",
-    readTime: "8 min read",
-    author: "Dr. Aliya Nurlanova",
+    slug: "kapital-street-trees",
+    title: "Инженерия под асфальтом: почему в новых кварталах деревья наконец приживаются",
+    category: "Экология",
+    date: "30 мая 2026",
+    source: "Kapital.kz",
+    url: "https://kapital.kz",
     excerpt:
-      "Most urban trees die young because of what happens below the paving. A look at the structural soil and irrigation systems that change the odds.",
+      "Деловое издание рассказывает о структурных почвенных ячейках и подповерхностном поливе Nord Botanic, которые меняют выживаемость уличных деревьев.",
   },
   {
-    slug: "biodiversity-net-gain-at-scale",
-    title: "Delivering biodiversity net gain at city scale",
-    category: "Sustainability",
-    date: "May 12, 2026",
-    readTime: "5 min read",
-    author: "Marcus Feldt",
+    slug: "tengrinews-biodiversity",
+    title: "Городское озеленение с приростом биоразнообразия: опыт Nord Botanic",
+    category: "Экология",
+    date: "12 мая 2026",
+    source: "Tengrinews",
+    url: "https://tengrinews.kz",
     excerpt:
-      "How we design and measure habitat so that large infrastructure projects leave nature measurably better than they found it.",
+      "Как крупные инфраструктурные проекты компании оставляют природу измеримо лучше, чем находят, — с цифрами по биоразнообразию и воде.",
   },
   {
-    slug: "greensphere-wins-landscape-award",
-    title: "GreenSphere named Green Infrastructure Contractor of the Year",
-    category: "Awards",
-    date: "April 24, 2026",
-    readTime: "3 min read",
-    author: "GreenSphere Newsroom",
+    slug: "kursiv-contractor-of-year",
+    title: "Nord Botanic — «Подрядчик года по зелёной инфраструктуре»",
+    category: "Награды",
+    date: "24 апреля 2026",
+    source: "Курсив",
+    url: "https://kursiv.kz",
     excerpt:
-      "The regional infrastructure awards recognised our Riverside Boulevard for excellence in engineering and environmental performance.",
+      "Региональная премия в области инфраструктуры отметила набережный бульвар компании за инженерное и экологическое качество.",
   },
   {
-    slug: "smart-irrigation-cuts-water-40-percent",
-    title: "Smart irrigation cuts client water use by up to 42%",
-    category: "Engineering",
-    date: "April 3, 2026",
-    readTime: "6 min read",
-    author: "Dr. Aliya Nurlanova",
+    slug: "inbusiness-smart-irrigation",
+    title: "Умный полив экономит заказчикам до 42% воды — кейс Nord Botanic",
+    category: "Проекты",
+    date: "3 апреля 2026",
+    source: "Inbusiness.kz",
+    url: "https://inbusiness.kz",
     excerpt:
-      "Central control, weather data and soil sensing are reshaping how large landscapes are watered. The results, measured across 900 zones.",
+      "Центральное управление, данные о погоде и датчики влажности меняют то, как поливают большие ландшафты. Результаты, измеренные на 900 зонах.",
   },
   {
-    slug: "restoring-the-river-corridor",
-    title: "Restoring 36 kilometres of degraded river corridor",
-    category: "Sustainability",
-    date: "March 15, 2026",
-    readTime: "7 min read",
-    author: "Marcus Feldt",
+    slug: "kazpravda-river-restoration",
+    title: "36 километров реки: как восстанавливают деградировавший коридор",
+    category: "Экология",
+    date: "15 марта 2026",
+    source: "Казахстанская правда",
+    url: "https://kazpravda.kz",
     excerpt:
-      "A multi-year programme is bringing eroded, contaminated riverbanks back to ecological function — and reopening them to the public.",
+      "Многолетняя программа Nord Botanic возвращает размытым и загрязнённым берегам экологическую функцию и вновь открывает их для людей.",
   },
   {
-    slug: "greensphere-expands-arboriculture-team",
-    title: "GreenSphere expands certified arboriculture division",
-    category: "Company",
-    date: "February 28, 2026",
-    readTime: "4 min read",
-    author: "GreenSphere Newsroom",
+    slug: "atameken-arboriculture",
+    title: "Компания расширяет сертифицированное подразделение арбористики",
+    category: "Компания",
+    date: "28 февраля 2026",
+    source: "Atameken Business",
+    url: "https://inbusiness.kz",
     excerpt:
-      "Growing long-term maintenance demand drives a major expansion of our certified tree-care and asset-management teams.",
+      "Рост спроса на долгосрочное обслуживание ведёт к значительному расширению команд по уходу за деревьями и управлению активами.",
   },
   {
-    slug: "designing-for-extreme-climate",
-    title: "Designing landscapes for extreme continental climates",
-    category: "Engineering",
-    date: "February 9, 2026",
-    readTime: "6 min read",
-    author: "Dr. Aliya Nurlanova",
+    slug: "ls-extreme-climate",
+    title: "Интервью: как проектировать ландшафт для −35 °C и летней засухи",
+    category: "Интервью",
+    date: "9 февраля 2026",
+    source: "LS / lsm.kz",
+    url: "https://lsm.kz",
     excerpt:
-      "From −35°C winters to summer drought, resilient species selection and detailing are what keep civic landscapes alive for decades.",
+      "Директор по ландшафту Nord Botanic — о подборе устойчивых видов и деталях, которые сохраняют городские посадки живыми десятилетиями.",
   },
   {
-    slug: "airport-green-zone-milestone",
-    title: "Airport Green Zone reaches practical completion",
-    category: "Projects",
-    date: "January 22, 2026",
-    readTime: "5 min read",
-    author: "GreenSphere Newsroom",
+    slug: "astana-times-airport",
+    title: "Airport Green Zone reaches completion inside a live airfield",
+    category: "Проекты",
+    date: "22 января 2026",
+    source: "The Astana Times",
+    url: "https://astanatimes.com",
     excerpt:
-      "A 58-hectare arrival landscape delivered inside a live airfield — balancing aviation safety with a world-class sense of arrival.",
+      "58-гектарный ландшафт прибытия, реализованный внутри действующего аэродрома, — баланс авиационной безопасности и первоклассного впечатления от прибытия.",
   },
 ];
 

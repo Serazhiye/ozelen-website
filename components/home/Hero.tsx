@@ -34,35 +34,35 @@ export function Hero() {
 
       {/* Placeholder caption, top-corner */}
       <span className="absolute right-6 top-28 text-[0.7rem] font-medium uppercase tracking-[0.16em] text-sand-100/40 lg:right-12">
-        Large Project Image — Drone View
+        Крупный кадр проекта — съёмка с дрона
       </span>
 
       <Container className="relative z-10 pb-16 pt-40 lg:pb-24">
         <motion.div variants={container} initial="hidden" animate="show" className="max-w-5xl">
           <motion.span variants={item} className="eyebrow text-sand-200 before:bg-sand-300/50">
-            Urban Landscaping & Green Infrastructure
+            Городское озеленение и зелёная инфраструктура
           </motion.span>
 
           <motion.h1
             variants={item}
             className="mt-7 font-display text-display-lg font-semibold text-balance"
           >
-            Building Greener Cities
-            <br className="hidden sm:block" /> for Future Generations.
+            Создаём зелёные города
+            <br className="hidden sm:block" /> для будущих поколений.
           </motion.h1>
 
           <motion.p
             variants={item}
             className="mt-8 max-w-xl text-lg leading-relaxed text-sand-100/75 text-pretty"
           >
-            We design, engineer and build city-scale parks, boulevards and green
-            infrastructure for governments, developers and institutions — landscapes
-            built to perform for generations.
+            Проектируем, инженерно рассчитываем и строим парки, бульвары и зелёную
+            инфраструктуру городского масштаба для государства, застройщиков и
+            институтов — ландшафты, которые работают поколениями.
           </motion.p>
 
           <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
             <Button href="/contact" variant="light" size="lg" withArrow>
-              Request Consultation
+              Заказать консультацию
             </Button>
             <Button
               href="/projects"
@@ -70,7 +70,7 @@ export function Hero() {
               size="lg"
               className="border-sand-100/25 text-sand-50 hover:border-sand-100/50 hover:bg-white/5"
             >
-              Explore Projects
+              Смотреть проекты
             </Button>
           </motion.div>
         </motion.div>

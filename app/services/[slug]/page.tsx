@@ -34,12 +34,12 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
   return (
     <>
       <PageHero
-        eyebrow="Service"
+        eyebrow="Услуга"
         title={service.title}
         intro={service.tagline}
         crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
+          { label: "Главная", href: "/" },
+          { label: "Услуги", href: "/services" },
           { label: service.title },
         ]}
       />
@@ -48,7 +48,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       <section className="bg-paper pt-12 lg:pt-16">
         <Container>
           <Reveal>
-            <Placeholder label={`${service.title} — Feature`} ratio="ultrawide" rounded="rounded-4xl" />
+            <Placeholder label={`${service.title} — крупный кадр`} ratio="ultrawide" rounded="rounded-4xl" />
           </Reveal>
         </Container>
       </section>
@@ -58,7 +58,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <Container>
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
-              <SectionHeading eyebrow="Overview" title="What this service delivers." />
+              <SectionHeading eyebrow="Обзор" title="Что даёт эта услуга." />
               <div className="mt-8 space-y-6">
                 {service.overview.map((para, i) => (
                   <Reveal key={i} delay={i * 0.05}>
@@ -70,7 +70,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
             <div className="lg:col-span-5">
               <Reveal delay={0.1}>
                 <div className="rounded-4xl border border-forest-900/8 bg-mist p-8 lg:p-10">
-                  <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-forest-600">By the numbers</h3>
+                  <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-forest-600">В цифрах</h3>
                   <dl className="mt-8 space-y-8">
                     {service.stats.map((stat) => (
                       <div key={stat.label} className="border-t border-forest-900/10 pt-6 first:border-0 first:pt-0">
@@ -90,8 +90,8 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       <section className="bg-mist py-section">
         <Container>
           <SectionHeading
-            eyebrow="Benefits"
-            title="Why clients specify GreenSphere."
+            eyebrow="Преимущества"
+            title="Почему заказчики выбирают Nord Botanic."
             className="max-w-2xl"
           />
           <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2">
@@ -119,7 +119,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <Container>
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
-              <SectionHeading eyebrow="Engineering process" title="How we build it." />
+              <SectionHeading eyebrow="Инженерный процесс" title="Как мы это строим." />
             </div>
             <div className="lg:col-span-8">
               <RevealGroup className="space-y-0">
@@ -147,9 +147,9 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <Container>
           <SectionHeading
             dark
-            eyebrow="Equipment & plant"
-            title="The right machine for the job — owned, not hired."
-            intro="Self-owned, precisely maintained plant gives us control over quality, schedule and cost."
+            eyebrow="Техника и парк"
+            title="Правильная машина под задачу — в собственности, а не в аренде."
+            intro="Собственная, точно обслуживаемая техника даёт нам контроль над качеством, сроками и стоимостью."
             className="max-w-2xl"
           />
           <RevealGroup className="mt-14 flex flex-wrap gap-3">
@@ -168,7 +168,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       {/* Gallery */}
       <section className="bg-paper py-section">
         <Container>
-          <SectionHeading eyebrow="Gallery" title="The work, up close." className="max-w-2xl" />
+          <SectionHeading eyebrow="Галерея" title="Работа вблизи." className="max-w-2xl" />
           <div className="mt-14">
             <Gallery labels={service.galleryLabels} columns={3} />
           </div>
@@ -180,7 +180,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
         <Container>
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
-              <SectionHeading eyebrow="FAQ" title="Common questions." />
+              <SectionHeading eyebrow="Вопросы и ответы" title="Частые вопросы." />
             </div>
             <div className="lg:col-span-8">
               <Accordion items={service.faqs} />
@@ -193,9 +193,9 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       <section className="bg-paper py-section">
         <Container>
           <div className="flex items-end justify-between gap-8">
-            <SectionHeading eyebrow="Related services" title="Explore more disciplines." />
+            <SectionHeading eyebrow="Смежные услуги" title="Другие дисциплины." />
             <Link href="/services" className="hidden shrink-0 text-sm font-medium text-forest-700 link-underline sm:inline-flex">
-              All services →
+              Все услуги →
             </Link>
           </div>
           <RevealGroup className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

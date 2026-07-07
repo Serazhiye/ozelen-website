@@ -11,23 +11,23 @@ export default function NotFound() {
 
       <Container className="relative">
         <div className="max-w-2xl">
-          <span className="eyebrow text-sand-200 before:bg-sand-300/50">Error 404</span>
+          <span className="eyebrow text-sand-200 before:bg-sand-300/50">Ошибка 404</span>
           <p className="mt-8 font-display text-[7rem] font-semibold leading-none tracking-tightest text-sand-50/90 sm:text-[10rem]">
             404
           </p>
           <h1 className="mt-4 font-display text-display-sm font-semibold text-balance">
-            This ground hasn&apos;t been landscaped yet.
+            Этот участок ещё не озеленён.
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-sand-100/70">
-            The page you&apos;re looking for may have moved or never existed. Let&apos;s get you back to solid ground.
+            Страница, которую вы ищете, могла переместиться или никогда не существовать. Давайте вернёмся на твёрдую почву.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Button href="/" variant="light" size="lg" withArrow>
-              Back to Home
+              На главную
             </Button>
             <Button href="/contact" variant="secondary" size="lg" className="border-sand-100/25 text-sand-50 hover:border-sand-100/50 hover:bg-white/5">
-              Contact Us
+              Связаться с нами
             </Button>
           </div>
 

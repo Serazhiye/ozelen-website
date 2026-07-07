@@ -19,7 +19,7 @@ export function ProjectCard({ project, className, ratio = "video" }: ProjectCard
     >
       <div className="relative overflow-hidden rounded-3xl">
         <Placeholder
-          label={`${project.title} — Aerial`}
+          label={`${project.title} — вид сверху`}
           ratio={ratio}
           dark
           rounded="rounded-3xl"
@@ -50,7 +50,7 @@ export function ProjectCard({ project, className, ratio = "video" }: ProjectCard
         </div>
         <div className="shrink-0 text-right">
           <p className="text-sm font-medium text-ink">{project.area}</p>
-          <p className="text-xs text-ink/45">Area</p>
+          <p className="text-xs text-ink/45">Площадь</p>
         </div>
       </div>
     </Link>

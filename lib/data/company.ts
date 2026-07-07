@@ -1,87 +1,86 @@
-import type { IconKey } from "./services";
-
-/** Content shared across Home, About and Careers. */
+/** Контент, общий для главной, «О компании» и «Карьеры». */
 
 export const whyGreenSphere: { title: string; description: string }[] = [
-  { title: "Engineering Expertise", description: "Chartered engineers and landscape architects working as one integrated team." },
-  { title: "Environmental Responsibility", description: "Measurable biodiversity, water and carbon outcomes on every project." },
-  { title: "Certified Specialists", description: "Accredited arborists, ecologists and irrigation designers in-house." },
-  { title: "Modern Equipment", description: "A GPS-guided fleet and precision plant owned and maintained by us." },
-  { title: "Long-Term Maintenance", description: "Stewardship contracts that protect asset value for decades." },
-  { title: "Government Compliance", description: "Full procurement, safety and environmental compliance as standard." },
+  { title: "Инженерная экспертиза", description: "Дипломированные инженеры и ландшафтные архитекторы работают как единая команда." },
+  { title: "Экологическая ответственность", description: "Измеримые результаты по биоразнообразию, воде и углероду на каждом проекте." },
+  { title: "Сертифицированные специалисты", description: "Аккредитованные арбористы, экологи и проектировщики полива в штате." },
+  { title: "Современная техника", description: "Парк с GPS-наведением и точная техника — в собственности и на нашем обслуживании." },
+  { title: "Долгосрочное обслуживание", description: "Договоры на уход, сохраняющие ценность актива десятилетиями." },
+  { title: "Соответствие требованиям", description: "Полное соблюдение закупочных, охранных и экологических норм по умолчанию." },
 ];
 
 export const processSteps: { number: string; title: string; description: string }[] = [
-  { number: "01", title: "Site Analysis", description: "Survey, soil testing and ecological baseline." },
-  { number: "02", title: "Planning", description: "Masterplanning aligned to budget and brief." },
-  { number: "03", title: "Engineering", description: "Grading, drainage and systems design." },
-  { number: "04", title: "Construction", description: "Self-delivered earthworks and hardscape." },
-  { number: "05", title: "Planting", description: "Phased planting and establishment." },
-  { number: "06", title: "Maintenance", description: "Long-term monitored stewardship." },
+  { number: "01", title: "Анализ участка", description: "Изыскания, анализ почв и экологическая база." },
+  { number: "02", title: "Планирование", description: "Мастер-план с учётом бюджета и задания." },
+  { number: "03", title: "Инженерия", description: "Проект рельефа, дренажа и систем." },
+  { number: "04", title: "Строительство", description: "Земляные работы и покрытия своими силами." },
+  { number: "05", title: "Посадка", description: "Поэтапная посадка и приживание." },
+  { number: "06", title: "Обслуживание", description: "Долгосрочный контролируемый уход." },
 ];
 
-export const industries: { title: string; description: string; icon: IconKey }[] = [
-  { title: "Government", description: "Ministries, civic squares and national landmarks.", icon: "infrastructure" },
-  { title: "Commercial", description: "Corporate campuses, retail and mixed-use realms.", icon: "landscaping" },
-  { title: "Residential", description: "Master-planned communities and developments.", icon: "park" },
-  { title: "Education", description: "University and school campus landscapes.", icon: "tree" },
-  { title: "Healthcare", description: "Therapeutic gardens and hospital grounds.", icon: "restoration" },
-  { title: "Industrial", description: "Industrial parks and logistics estates.", icon: "maintenance" },
-  { title: "Transportation", description: "Airports, rail and highway corridors.", icon: "boulevard" },
-  { title: "Hospitality", description: "Resorts, hotels and destination landscapes.", icon: "irrigation" },
+export const industries: { title: string; description: string; icon: string }[] = [
+  { title: "Госсектор", description: "Министерства, гражданские площади и национальные объекты.", icon: "🏛️" },
+  { title: "Коммерция", description: "Корпоративные кампусы, ритейл и многофункциональные среды.", icon: "🏢" },
+  { title: "Жильё", description: "Мастер-планируемые сообщества и жилые районы.", icon: "🏘️" },
+  { title: "Образование", description: "Ландшафты университетских и школьных кампусов.", icon: "🎓" },
+  { title: "Здравоохранение", description: "Терапевтические сады и территории больниц.", icon: "🏥" },
+  { title: "Промышленность", description: "Индустриальные парки и логистические комплексы.", icon: "🏭" },
+  { title: "Транспорт", description: "Аэропорты, железные дороги и автомагистрали.", icon: "✈️" },
+  { title: "Гостеприимство", description: "Курорты, отели и знаковые ландшафты.", icon: "🏨" },
 ];
 
 export const milestones: { year: string; title: string; description: string }[] = [
-  { year: "2007", title: "Founded", description: "GreenSphere is established with a single landscaping crew and a civic ambition." },
-  { year: "2011", title: "First City Park", description: "Delivery of our first major municipal park marks the shift to city-scale work." },
-  { year: "2014", title: "Engineering Division", description: "In-house drainage, irrigation and grading engineering is formed." },
-  { year: "2017", title: "1 Million Trees", description: "We pass one million trees planted across all programmes." },
-  { year: "2020", title: "Restoration Practice", description: "A dedicated environmental restoration practice is launched." },
-  { year: "2023", title: "Central Metropolitan Park", description: "Our largest single scheme to date opens to the public." },
-  { year: "2026", title: "430+ Projects", description: "GreenSphere becomes the region's leading green infrastructure contractor." },
+  { year: "2007", title: "Основание", description: "Nord Botanic создан с одной бригадой озеленения и гражданской амбицией." },
+  { year: "2011", title: "Первый городской парк", description: "Сдача первого крупного муниципального парка — переход к городскому масштабу." },
+  { year: "2014", title: "Инженерное подразделение", description: "Формируется собственная инженерия дренажа, полива и рельефа." },
+  { year: "2017", title: "1 миллион деревьев", description: "Мы преодолеваем отметку в один миллион высаженных деревьев." },
+  { year: "2020", title: "Практика восстановления", description: "Запущена отдельная практика экологического восстановления." },
+  { year: "2022", title: "Тепличный комплекс", description: "Открывается собственный тепличный комплекс в Акмолинской области." },
+  { year: "2023", title: "Центральный городской парк", description: "Наш крупнейший проект открывается для публики." },
+  { year: "2026", title: "430+ проектов", description: "Nord Botanic становится ведущим подрядчиком региона по зелёной инфраструктуре." },
 ];
 
 export const values: { title: string; description: string }[] = [
-  { title: "Precision", description: "We hold landscape to the same engineering rigour as any critical infrastructure." },
-  { title: "Stewardship", description: "We build for the generation that will use the landscape, not the ribbon-cutting." },
-  { title: "Integrity", description: "Transparent reporting, honest budgets and compliance without shortcuts." },
-  { title: "Ecology", description: "Every project is a chance to leave the environment measurably better." },
+  { title: "Точность", description: "Мы держим ландшафт на той же инженерной планке, что и любую критическую инфраструктуру." },
+  { title: "Забота", description: "Мы строим для поколения, которое будет пользоваться ландшафтом, а не для перерезания ленты." },
+  { title: "Честность", description: "Прозрачная отчётность, честные бюджеты и соответствие без обходных путей." },
+  { title: "Экология", description: "Каждый проект — шанс оставить среду измеримо лучше." },
 ];
 
 export const leadership: { name: string; role: string; bio: string }[] = [
-  { name: "Elena Voss", role: "Chief Executive Officer", bio: "Two decades leading civic infrastructure delivery across three continents." },
-  { name: "Timur Alikhan", role: "Chief Engineering Officer", bio: "Chartered civil engineer specialising in urban water and green systems." },
-  { name: "Dr. Aliya Nurlanova", role: "Director of Landscape", bio: "Landscape architect and researcher in resilient urban planting." },
-  { name: "Marcus Feldt", role: "Director of Sustainability", bio: "Ecologist leading biodiversity and restoration strategy." },
-  { name: "Sofia Berg", role: "Chief Operating Officer", bio: "Programme leader for multi-site municipal frameworks." },
-  { name: "Daniyar Orozov", role: "Director of Maintenance", bio: "Heads long-term stewardship and arboriculture operations." },
+  { name: "Елена Восс", role: "Генеральный директор", bio: "Два десятилетия руководства гражданскими инфраструктурными проектами на трёх континентах." },
+  { name: "Тимур Алихан", role: "Директор по инженерии", bio: "Дипломированный инженер-строитель по городским водным и зелёным системам." },
+  { name: "Алия Нурланова", role: "Директор по ландшафту", bio: "Ландшафтный архитектор и исследователь устойчивых городских посадок." },
+  { name: "Маркус Фельдт", role: "Директор по устойчивому развитию", bio: "Эколог, ведущий стратегию биоразнообразия и восстановления." },
+  { name: "София Берг", role: "Операционный директор", bio: "Руководитель программ по мультиобъектным муниципальным рамкам." },
+  { name: "Данияр Орозов", role: "Директор по обслуживанию", bio: "Возглавляет долгосрочный уход и операции арбористики." },
 ];
 
 export const awards: { year: string; title: string; body: string }[] = [
-  { year: "2026", title: "Green Infrastructure Contractor of the Year", body: "Regional Infrastructure Awards" },
-  { year: "2025", title: "Excellence in Public Realm", body: "National Landscape Institute" },
-  { year: "2024", title: "Sustainability Project of the Year", body: "Built Environment Council" },
-  { year: "2023", title: "Best Large-Scale Park", body: "Urban Design Awards" },
-  { year: "2022", title: "Engineering Innovation Award", body: "Civil Engineering Society" },
-  { year: "2021", title: "Safety Leadership Commendation", body: "Occupational Safety Board" },
+  { year: "2026", title: "Подрядчик года по зелёной инфраструктуре", body: "Региональная премия в области инфраструктуры" },
+  { year: "2025", title: "За превосходство в общественном пространстве", body: "Национальный институт ландшафта" },
+  { year: "2024", title: "Проект года в устойчивом развитии", body: "Совет по застроенной среде" },
+  { year: "2023", title: "Лучший крупный парк", body: "Премия городского дизайна" },
+  { year: "2022", title: "Премия за инженерную инновацию", body: "Общество гражданских инженеров" },
+  { year: "2021", title: "Признание за лидерство в безопасности", body: "Совет по охране труда" },
 ];
 
 export const certifications: string[] = [
-  "ISO 9001 Quality",
-  "ISO 14001 Environmental",
-  "ISO 45001 Safety",
-  "Certified Arboriculture",
-  "Irrigation Association",
-  "Government Framework Approved",
+  "ISO 9001 — качество",
+  "ISO 14001 — экология",
+  "ISO 45001 — безопасность",
+  "Сертифицированная арбористика",
+  "Ассоциация полива",
+  "Одобрен для госзакупок",
 ];
 
 export const careerBenefits: { title: string; description: string }[] = [
-  { title: "Meaningful Work", description: "Build the parks and landscapes that define how cities feel for generations." },
-  { title: "Growth & Training", description: "Funded certifications, mentorship and clear progression paths." },
-  { title: "Modern Equipment", description: "Work with a best-in-class, well-maintained fleet and technology." },
-  { title: "Health & Safety", description: "An industry-leading safety culture that puts people first." },
-  { title: "Competitive Reward", description: "Market-leading pay, bonuses and comprehensive benefits." },
-  { title: "Team Culture", description: "A collaborative, multidisciplinary team that respects craft." },
+  { title: "Значимая работа", description: "Стройте парки и ландшафты, которые определяют облик городов на поколения." },
+  { title: "Рост и обучение", description: "Оплачиваемые сертификации, наставничество и понятные пути развития." },
+  { title: "Современная техника", description: "Работайте с лучшим в классе, отлично обслуживаемым парком и технологиями." },
+  { title: "Здоровье и безопасность", description: "Культура безопасности уровня отрасли, где люди на первом месте." },
+  { title: "Конкурентное вознаграждение", description: "Оплата выше рынка, бонусы и полный соцпакет." },
+  { title: "Командная культура", description: "Слаженная междисциплинарная команда, уважающая мастерство." },
 ];
 
 export const openPositions: {
@@ -90,19 +89,19 @@ export const openPositions: {
   location: string;
   type: string;
 }[] = [
-  { title: "Senior Landscape Architect", department: "Design", location: "Astana", type: "Full-time" },
-  { title: "Civil Engineer — Drainage", department: "Engineering", location: "Astana", type: "Full-time" },
-  { title: "Irrigation Systems Designer", department: "Engineering", location: "Almaty", type: "Full-time" },
-  { title: "Certified Arborist", department: "Maintenance", location: "Shymkent", type: "Full-time" },
-  { title: "Site Manager — Parks", department: "Construction", location: "Astana", type: "Full-time" },
-  { title: "Ecologist", department: "Sustainability", location: "Almaty", type: "Full-time" },
-  { title: "Project Estimator", department: "Commercial", location: "Astana", type: "Full-time" },
-  { title: "Heavy Plant Operator", department: "Construction", location: "Various", type: "Full-time" },
+  { title: "Ведущий ландшафтный архитектор", department: "Проектирование", location: "Кокшетау", type: "Полная занятость" },
+  { title: "Инженер-строитель — дренаж", department: "Инженерия", location: "Кокшетау", type: "Полная занятость" },
+  { title: "Проектировщик систем полива", department: "Инженерия", location: "Астана", type: "Полная занятость" },
+  { title: "Сертифицированный арборист", department: "Обслуживание", location: "Шымкент", type: "Полная занятость" },
+  { title: "Руководитель участка — парки", department: "Строительство", location: "Кокшетау", type: "Полная занятость" },
+  { title: "Эколог", department: "Устойчивое развитие", location: "Алматы", type: "Полная занятость" },
+  { title: "Сметчик проектов", department: "Коммерция", location: "Кокшетау", type: "Полная занятость" },
+  { title: "Агроном тепличного комплекса", department: "Теплица", location: "пос. Станционный", type: "Полная занятость" },
 ];
 
 export const departments: { name: string; email: string; description: string }[] = [
-  { name: "New Business & Tenders", email: "tenders@greensphere.com", description: "Bids, frameworks and project enquiries." },
-  { name: "Careers & Recruitment", email: "careers@greensphere.com", description: "Job applications and talent enquiries." },
-  { name: "Media & Press", email: "press@greensphere.com", description: "Press, interviews and media requests." },
-  { name: "Supplier Relations", email: "suppliers@greensphere.com", description: "Procurement and partnership enquiries." },
+  { name: "Тендеры и новые проекты", email: "tenders@nordbotanic.kz", description: "Заявки, рамочные соглашения и запросы по проектам." },
+  { name: "Карьера и подбор", email: "careers@nordbotanic.kz", description: "Заявки на вакансии и вопросы по талантам." },
+  { name: "Пресса и СМИ", email: "press@nordbotanic.kz", description: "Пресса, интервью и медиазапросы." },
+  { name: "Работа с поставщиками", email: "suppliers@nordbotanic.kz", description: "Закупки и вопросы партнёрства." },
 ];

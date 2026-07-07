@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Input, Label, Select, Textarea } from "@/components/ui/Field";
 
 const inquiryTypes = [
-  "New project / tender",
-  "Partnership",
-  "Maintenance contract",
-  "Press & media",
-  "General enquiry",
+  "Новый проект / тендер",
+  "Партнёрство",
+  "Договор на обслуживание",
+  "Пресса и СМИ",
+  "Общий вопрос",
 ];
 
 export function InquiryForm() {
@@ -35,16 +35,16 @@ export function InquiryForm() {
                 <path d="M5 12.5l4 4 10-10" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <h3 className="mt-6 text-2xl font-semibold tracking-tight text-ink">Message sent</h3>
+            <h3 className="mt-6 text-2xl font-semibold tracking-tight text-ink">Сообщение отправлено</h3>
             <p className="mx-auto mt-3 max-w-md text-ink/60">
-              Thank you for reaching out. Our team will respond within one business day.
+              Спасибо за обращение. Наша команда ответит в течение одного рабочего дня.
             </p>
             <button
               type="button"
               onClick={() => setSubmitted(false)}
               className="mt-8 text-sm font-medium text-forest-700 link-underline"
             >
-              Send another message
+              Отправить ещё одно сообщение
             </button>
           </motion.div>
         ) : (
@@ -56,26 +56,26 @@ export function InquiryForm() {
             className="grid gap-6 sm:grid-cols-2"
           >
             <div>
-              <Label htmlFor="name">Full name</Label>
-              <Input id="name" name="name" required autoComplete="name" placeholder="Jane Doe" />
+              <Label htmlFor="name">Имя и фамилия</Label>
+              <Input id="name" name="name" required autoComplete="name" placeholder="Иван Иванов" />
             </div>
             <div>
-              <Label htmlFor="organisation">Organisation</Label>
-              <Input id="organisation" name="organisation" autoComplete="organization" placeholder="City of…" />
+              <Label htmlFor="organisation">Организация</Label>
+              <Input id="organisation" name="organisation" autoComplete="organization" placeholder="Название компании…" />
             </div>
             <div>
-              <Label htmlFor="c-email">Email</Label>
-              <Input id="c-email" name="email" type="email" required autoComplete="email" placeholder="jane@email.com" />
+              <Label htmlFor="c-email">Эл. почта</Label>
+              <Input id="c-email" name="email" type="email" required autoComplete="email" placeholder="ivan@email.com" />
             </div>
             <div>
-              <Label htmlFor="c-phone">Phone</Label>
+              <Label htmlFor="c-phone">Телефон</Label>
               <Input id="c-phone" name="phone" type="tel" autoComplete="tel" placeholder="+7 (777) 000-00-00" />
             </div>
             <div className="sm:col-span-2">
-              <Label htmlFor="type">Enquiry type</Label>
+              <Label htmlFor="type">Тип обращения</Label>
               <Select id="type" name="type" defaultValue="" required>
                 <option value="" disabled>
-                  Select a topic
+                  Выберите тему
                 </option>
                 {inquiryTypes.map((t) => (
                   <option key={t} value={t}>
@@ -85,16 +85,16 @@ export function InquiryForm() {
               </Select>
             </div>
             <div className="sm:col-span-2">
-              <Label htmlFor="c-message">How can we help?</Label>
-              <Textarea id="c-message" name="message" required placeholder="Tell us about your site, brief and timeline." />
+              <Label htmlFor="c-message">Чем можем помочь?</Label>
+              <Textarea id="c-message" name="message" required placeholder="Расскажите о вашем участке, задании и сроках." />
             </div>
             <div className="sm:col-span-2 flex items-center justify-between gap-4">
-              <p className="text-xs text-ink/45">Typical response time: 1 business day.</p>
+              <p className="text-xs text-ink/45">Обычное время ответа: 1 рабочий день.</p>
               <button
                 type="submit"
                 className="inline-flex items-center gap-2 rounded-full bg-forest-900 px-7 py-3.5 text-sm font-medium text-sand-50 transition-all duration-500 ease-out-expo hover:bg-forest-800 hover:shadow-lift"
               >
-                Send message
+                Отправить сообщение
                 <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

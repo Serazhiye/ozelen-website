@@ -9,25 +9,25 @@ import { site } from "@/lib/site";
 import { departments } from "@/lib/data/company";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Контакты",
   description:
-    "Talk to GreenSphere Infrastructure about your project, tender or partnership. Phone, WhatsApp, email and our head office details.",
+    "Свяжитесь с Nord Botanic по вопросам проекта, тендера или партнёрства. Телефон, WhatsApp, эл. почта, адреса офиса и тепличного комплекса.",
 };
 
 const channels = [
-  { label: "Phone", value: site.contact.phone, href: site.contact.phoneHref },
-  { label: "WhatsApp", value: "Message us", href: site.contact.whatsappHref, external: true },
-  { label: "Email", value: site.contact.email, href: site.contact.emailHref },
+  { label: "Телефон", value: site.contact.phone, href: site.contact.phoneHref },
+  { label: "WhatsApp", value: "Написать", href: site.contact.whatsappHref, external: true },
+  { label: "Эл. почта", value: site.contact.email, href: site.contact.emailHref },
 ];
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="Contact"
-        title="Let's talk about your next landmark."
-        intro="Whether you're planning a park, a boulevard or a district, our team is ready to help. Tell us about your project and we'll respond within one business day."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
+        eyebrow="Контакты"
+        title="Обсудим ваш следующий ориентир."
+        intro="Планируете парк, бульвар или целый район — наша команда готова помочь. Расскажите о проекте, и мы ответим в течение одного рабочего дня."
+        crumbs={[{ label: "Главная", href: "/" }, { label: "Контакты" }]}
       />
 
       {/* Channels */}
@@ -62,7 +62,7 @@ export default function ContactPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             {/* Form */}
             <div className="lg:col-span-7">
-              <SectionHeading eyebrow="Send a message" title="Start the conversation." />
+              <SectionHeading eyebrow="Написать нам" title="Начните разговор." />
               <Reveal className="mt-10">
                 <InquiryForm />
               </Reveal>
@@ -82,9 +82,19 @@ export default function ContactPage() {
                     </address>
                   </div>
 
+                  {/* Greenhouse */}
+                  <div>
+                    <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-forest-600">{site.greenhouse.label}</h3>
+                    <address className="mt-4 not-italic leading-relaxed text-ink/70">
+                      {site.greenhouse.lines.map((line) => (
+                        <span key={line} className="block">{line}</span>
+                      ))}
+                    </address>
+                  </div>
+
                   {/* Hours */}
                   <div>
-                    <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-forest-600">Business hours</h3>
+                    <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-forest-600">Часы работы</h3>
                     <dl className="mt-4 space-y-2">
                       {site.office.hours.map((h) => (
                         <div key={h.day} className="flex justify-between border-b border-forest-900/8 pb-2 text-sm">
@@ -97,9 +107,9 @@ export default function ContactPage() {
 
                   {/* Emergency */}
                   <div className="rounded-3xl bg-forest-950 p-7 text-sand-50">
-                    <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-sand-200">Emergency line</h3>
+                    <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-sand-200">Аварийная линия</h3>
                     <p className="mt-3 text-sm text-sand-100/60">
-                      For urgent site or safety incidents on live GreenSphere projects.
+                      Для срочных инцидентов на действующих объектах Nord Botanic.
                     </p>
                     <a href={site.contact.emergencyHref} className="mt-4 inline-block text-xl font-semibold text-sand-50">
                       {site.contact.emergency}
@@ -116,8 +126,8 @@ export default function ContactPage() {
       <section className="bg-paper py-section">
         <Container>
           <SectionHeading
-            eyebrow="Departments"
-            title="Reach the right team directly."
+            eyebrow="Отделы"
+            title="Свяжитесь напрямую с нужной командой."
             className="max-w-2xl"
           />
           <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2">

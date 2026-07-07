@@ -13,14 +13,14 @@ export function FeaturedProjects() {
       <Container>
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <SectionHeading
-            eyebrow="Selected work"
-            title="Landmark projects across the region."
-            intro="From metropolitan parks to airport gateways — a selection of the schemes that define our practice."
+            eyebrow="Избранные работы"
+            title="Знаковые проекты по всему региону."
+            intro="От городских парков до ворот аэропортов — подборка проектов, определяющих нашу практику."
             className="max-w-2xl"
           />
           <div className="shrink-0">
             <Button href="/projects" variant="secondary" withArrow>
-              All Projects
+              Все проекты
             </Button>
           </div>
         </div>

@@ -11,7 +11,11 @@ import { projects } from "@/lib/data/projects";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { cn } from "@/lib/utils";
 
-type MegaKey = "Services" | "Projects" | null;
+type MegaKey = "services" | "projects" | null;
+
+// Which nav hrefs open a mega panel.
+const megaFor = (href: string): MegaKey =>
+  href === "/services" ? "services" : href === "/projects" ? "projects" : null;
 
 export function Navbar() {
   const pathname = usePathname();
@@ -54,18 +58,18 @@ export function Navbar() {
       )}
       onMouseLeave={() => setMega(null)}
     >
-      <nav className="container-x flex h-[76px] items-center justify-between" aria-label="Primary">
+      <nav className="container-x flex h-[76px] items-center justify-between" aria-label="Основная навигация">
         <Logo tone={tone} />
 
         {/* Desktop navigation */}
         <div className="hidden items-center gap-1 lg:flex">
           {mainNav.map((item) => {
-            const hasMega = item.label === "Services" || item.label === "Projects";
+            const itemMega = megaFor(item.href);
             const active = pathname.startsWith(item.href);
             return (
               <div
                 key={item.href}
-                onMouseEnter={() => setMega(hasMega ? (item.label as MegaKey) : null)}
+                onMouseEnter={() => setMega(itemMega)}
               >
                 <Link
                   href={item.href}
@@ -76,7 +80,7 @@ export function Navbar() {
                       : "text-ink/70 hover:text-ink",
                     active && (tone === "light" ? "text-sand-50" : "text-ink"),
                   )}
-                  aria-expanded={hasMega ? mega === item.label : undefined}
+                  aria-expanded={itemMega ? mega === itemMega : undefined}
                 >
                   {item.label}
                 </Link>
@@ -104,7 +108,7 @@ export function Navbar() {
                 : "bg-forest-900 text-sand-50 hover:bg-forest-800",
             )}
           >
-            Request Consultation
+            Заказать консультацию
           </Link>
         </div>
 
@@ -113,7 +117,7 @@ export function Navbar() {
           type="button"
           onClick={() => setMobileOpen(true)}
           className="lg:hidden"
-          aria-label="Open menu"
+          aria-label="Открыть меню"
         >
           <div className="flex flex-col items-end gap-1.5">
             <span className={cn("h-0.5 w-6 rounded-full transition-colors", tone === "light" ? "bg-sand-50" : "bg-ink")} />
@@ -134,7 +138,7 @@ export function Navbar() {
             className="absolute inset-x-0 top-full hidden border-b border-forest-900/8 bg-paper/95 backdrop-blur-xl lg:block"
           >
             <div className="container-x py-8">
-              {mega === "Services" ? (
+              {mega === "services" ? (
                 <div className="grid grid-cols-4 gap-x-8 gap-y-2">
                   {services.map((s) => (
                     <Link
@@ -142,8 +146,8 @@ export function Navbar() {
                       href={`/services/${s.slug}`}
                       className="group flex items-start gap-3 rounded-2xl p-3 transition-colors hover:bg-mist"
                     >
-                      <span className="mt-0.5 text-forest-600">
-                        <ServiceIcon name={s.icon} className="h-6 w-6" />
+                      <span className="mt-0.5">
+                        <ServiceIcon emoji={s.icon} className="text-xl" />
                       </span>
                       <span>
                         <span className="block text-sm font-semibold text-ink">{s.title}</span>
@@ -180,15 +184,15 @@ export function Navbar() {
               )}
               <div className="mt-6 flex items-center justify-between border-t border-forest-900/8 pt-5">
                 <p className="text-sm text-ink/50">
-                  {mega === "Services"
-                    ? "Full-service green infrastructure, engineered end to end."
-                    : "Selected work across government, transport and development."}
+                  {mega === "services"
+                    ? "Зелёная инфраструктура полного цикла, рассчитанная от и до."
+                    : "Избранные работы в госсекторе, транспорте и застройке."}
                 </p>
                 <Link
-                  href={mega === "Services" ? "/services" : "/projects"}
+                  href={mega === "services" ? "/services" : "/projects"}
                   className="text-sm font-medium text-forest-700 link-underline"
                 >
-                  View all {mega.toLowerCase()} →
+                  {mega === "services" ? "Все услуги" : "Все проекты"} →
                 </Link>
               </div>
             </div>
@@ -211,7 +215,7 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => setMobileOpen(false)}
-                aria-label="Close menu"
+                aria-label="Закрыть меню"
                 className="text-sand-50"
               >
                 <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -246,7 +250,7 @@ export function Navbar() {
                   href="/contact"
                   className="flex w-full items-center justify-center rounded-full bg-sand-50 px-6 py-4 text-base font-medium text-forest-900"
                 >
-                  Request Consultation
+                  Заказать консультацию
                 </Link>
                 <a href={site.contact.phoneHref} className="block text-center text-sand-100/70">
                   {site.contact.phone}

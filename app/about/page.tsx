@@ -17,24 +17,24 @@ import {
 } from "@/lib/data/company";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "О компании",
   description:
-    "GreenSphere Infrastructure combines landscape craft with civil-engineering discipline to build city-scale green infrastructure for governments, developers and institutions.",
+    "Nord Botanic сочетает ландшафтное мастерство с дисциплиной гражданской инженерии, создавая зелёную инфраструктуру городского масштаба для государства, застройщиков и институтов.",
 };
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About GreenSphere"
-        title="We engineer the landscapes that cities are judged by."
-        intro="Founded in 2007, GreenSphere has grown from a single crew into the region's leading green-infrastructure contractor — delivering more than 430 projects with the discipline of an engineering firm and the eye of a landscape studio."
-        crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
+        eyebrow="О Nord Botanic"
+        title="Мы создаём ландшафты, по которым судят о городах."
+        intro="Основанная в 2007 году, Nord Botanic выросла из одной бригады в ведущего подрядчика региона по зелёной инфраструктуре — более 430 проектов, реализованных с дисциплиной инженерной компании и глазом ландшафтной студии."
+        crumbs={[{ label: "Главная", href: "/" }, { label: "О компании" }]}
         meta={[
-          { label: "Founded", value: "2007" },
-          { label: "Projects", value: "430+" },
-          { label: "Specialists", value: "350+" },
-          { label: "Trees Planted", value: "1.2M" },
+          { label: "Основана", value: "2007" },
+          { label: "Проектов", value: "430+" },
+          { label: "Специалистов", value: "350+" },
+          { label: "Деревьев", value: "1,2 млн" },
         ]}
       />
 
@@ -44,24 +44,24 @@ export default function AboutPage() {
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <SectionHeading
-                eyebrow="Our purpose"
-                title="Building the green systems that make cities liveable."
+                eyebrow="Наша цель"
+                title="Строим зелёные системы, делающие города пригодными для жизни."
               />
             </div>
             <div className="space-y-10 lg:col-span-7">
               <Reveal>
                 <div>
-                  <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-forest-600">Mission</h3>
+                  <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-forest-600">Миссия</h3>
                   <p className="mt-4 text-2xl font-medium leading-snug tracking-tight text-ink text-balance">
-                    To engineer the green infrastructure that makes cities cooler, healthier and more resilient — at a scale and standard others can&apos;t match.
+                    Создавать зелёную инфраструктуру, делающую города прохладнее, здоровее и устойчивее — в масштабе и на уровне, недоступных другим.
                   </p>
                 </div>
               </Reveal>
               <Reveal delay={0.05}>
                 <div>
-                  <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-forest-600">Vision</h3>
+                  <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-forest-600">Видение</h3>
                   <p className="mt-4 text-2xl font-medium leading-snug tracking-tight text-ink text-balance">
-                    A generation of cities where nature and infrastructure are designed, built and maintained as one system.
+                    Поколение городов, где природа и инфраструктура спроектированы, построены и обслуживаются как единая система.
                   </p>
                 </div>
               </Reveal>
@@ -92,9 +92,9 @@ export default function AboutPage() {
       <section className="bg-paper py-section">
         <Container>
           <SectionHeading
-            eyebrow="Our history"
-            title="Nearly two decades of building at city scale."
-            intro="Each milestone marks a step from landscaping crew to integrated green-infrastructure engineer."
+            eyebrow="Наша история"
+            title="Почти два десятилетия работы в городском масштабе."
+            intro="Каждая веха — шаг от бригады озеленения к интегрированному инженеру зелёной инфраструктуры."
             className="max-w-2xl"
           />
           <div className="mt-16">
@@ -123,8 +123,8 @@ export default function AboutPage() {
       <section className="bg-mist py-section">
         <Container>
           <SectionHeading
-            eyebrow="What we stand for"
-            title="Values that hold on the hardest projects."
+            eyebrow="Наши принципы"
+            title="Ценности, которые держат на самых сложных проектах."
             className="max-w-2xl"
           />
           <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -145,41 +145,41 @@ export default function AboutPage() {
         <Container>
           <div className="grid gap-6 lg:grid-cols-2">
             <Reveal className="rounded-4xl bg-forest-950 p-10 text-sand-50 lg:p-14">
-              <span className="eyebrow text-sand-200 before:bg-sand-300/50">Safety standards</span>
+              <span className="eyebrow text-sand-200 before:bg-sand-300/50">Стандарты безопасности</span>
               <h3 className="mt-6 text-3xl font-semibold tracking-tight text-balance">
-                An industry-leading safety culture.
+                Культура безопасности уровня отрасли.
               </h3>
               <p className="mt-5 leading-relaxed text-sand-100/70">
-                Every site runs to certified health-and-safety systems, with continuous training, audited method statements and a leadership team that treats zero-harm as non-negotiable.
+                Каждый объект работает по сертифицированным системам охраны труда — с постоянным обучением, аудируемыми технологическими картами и руководством, для которого «ноль травм» не обсуждается.
               </p>
               <div className="mt-8 grid grid-cols-2 gap-6 border-t border-sand-100/15 pt-8">
                 <div>
-                  <p className="text-3xl font-semibold">4.2M+</p>
-                  <p className="mt-1 text-sm text-sand-100/60">Hours worked safely</p>
+                  <p className="text-3xl font-semibold">4,2 млн+</p>
+                  <p className="mt-1 text-sm text-sand-100/60">часов без происшествий</p>
                 </div>
                 <div>
                   <p className="text-3xl font-semibold">ISO 45001</p>
-                  <p className="mt-1 text-sm text-sand-100/60">Certified system</p>
+                  <p className="mt-1 text-sm text-sand-100/60">Сертифицированная система</p>
                 </div>
               </div>
             </Reveal>
 
             <Reveal delay={0.08} className="rounded-4xl border border-forest-900/8 bg-mist p-10 lg:p-14">
-              <span className="eyebrow">Environmental commitment</span>
+              <span className="eyebrow">Экологическая ответственность</span>
               <h3 className="mt-6 text-3xl font-semibold tracking-tight text-ink text-balance">
-                Leaving every site better than we found it.
+                Оставляем каждый участок лучше, чем нашли.
               </h3>
               <p className="mt-5 leading-relaxed text-ink/60">
-                Biodiversity net gain, measured water savings and low-carbon delivery are designed into every project — and reported against clear targets our clients can disclose with confidence.
+                Прирост биоразнообразия, измеримая экономия воды и низкоуглеродное исполнение заложены в каждый проект — и отражены в отчётности по чётким показателям, которые заказчик может уверенно раскрывать.
               </p>
               <div className="mt-8 grid grid-cols-2 gap-6 border-t border-forest-900/10 pt-8">
                 <div>
                   <p className="text-3xl font-semibold text-forest-800">+31%</p>
-                  <p className="mt-1 text-sm text-ink/55">Avg. biodiversity gain</p>
+                  <p className="mt-1 text-sm text-ink/55">Ср. прирост биоразнообразия</p>
                 </div>
                 <div>
                   <p className="text-3xl font-semibold text-forest-800">−42%</p>
-                  <p className="mt-1 text-sm text-ink/55">Avg. water reduction</p>
+                  <p className="mt-1 text-sm text-ink/55">Ср. снижение расхода воды</p>
                 </div>
               </div>
             </Reveal>
@@ -191,16 +191,16 @@ export default function AboutPage() {
       <section className="bg-mist py-section">
         <Container>
           <SectionHeading
-            eyebrow="Leadership"
-            title="The people accountable for every project."
-            intro="A multidisciplinary board pairing engineering, landscape, ecology and operations leadership."
+            eyebrow="Руководство"
+            title="Люди, отвечающие за каждый проект."
+            intro="Междисциплинарный совет, объединяющий инженерию, ландшафт, экологию и операции."
             className="max-w-2xl"
           />
           <RevealGroup className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {leadership.map((person) => (
               <RevealItem key={person.name}>
                 <div className="group">
-                  <Placeholder label={`Portrait — ${person.name}`} ratio="portrait" rounded="rounded-3xl" />
+                  <Placeholder label={`Портрет — ${person.name}`} ratio="portrait" rounded="rounded-3xl" />
                   <h3 className="mt-5 text-lg font-semibold text-ink">{person.name}</h3>
                   <p className="text-sm font-medium text-forest-700">{person.role}</p>
                   <p className="mt-2 text-sm leading-relaxed text-ink/55">{person.bio}</p>
@@ -216,7 +216,7 @@ export default function AboutPage() {
         <Container>
           <div className="grid gap-16 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
-              <SectionHeading eyebrow="Recognition" title="Awards & accolades." />
+              <SectionHeading eyebrow="Признание" title="Награды и достижения." />
               <RevealGroup className="mt-12 space-y-0">
                 {awards.map((a) => (
                   <RevealItem key={a.title}>
@@ -232,7 +232,7 @@ export default function AboutPage() {
               </RevealGroup>
             </div>
             <div className="lg:col-span-5">
-              <SectionHeading eyebrow="Certifications" title="Accredited & compliant." />
+              <SectionHeading eyebrow="Сертификаты" title="Аккредитации и соответствие." />
               <RevealGroup className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {certifications.map((c) => (
                   <RevealItem key={c}>
@@ -256,20 +256,20 @@ export default function AboutPage() {
       <section className="bg-mist py-section">
         <Container>
           <SectionHeading
-            eyebrow="Our world"
-            title="Inside GreenSphere."
+            eyebrow="Наш мир"
+            title="Внутри Nord Botanic."
             className="max-w-2xl"
           />
           <div className="mt-14">
             <Gallery
-              labels={["Head Office", "Design Studio", "Engineering Lab", "Nursery Partner", "Team on Site", "Fleet Yard"]}
+              labels={["Головной офис", "Проектная студия", "Инженерная лаборатория", "Питомник-партнёр", "Команда на объекте", "Автопарк"]}
               columns={3}
             />
           </div>
         </Container>
       </section>
 
-      <CTASection eyebrow="Work with us" title="Ready to build something lasting?" />
+      <CTASection eyebrow="Работать с нами" title="Готовы построить что-то долговечное?" />
     </>
   );
 }

@@ -1,8 +1,8 @@
-# GreenSphere Infrastructure
+# Nord Botanic
 
-> Engineering Greener Cities.
+> Создаём зелёные города.
 
-An enterprise-grade, multi-page corporate website for **GreenSphere Infrastructure**, a city-scale urban landscaping and green-infrastructure corporation. Built to feel like the work of a premium digital agency — minimal, confident, precise.
+An enterprise-grade, multi-page corporate website (in **Russian**) for **Nord Botanic**, a city-scale urban landscaping and green-infrastructure company with its own greenhouse complex near Kokshetau, Kazakhstan. Built to feel like the work of a premium digital agency — minimal, confident, precise.
 
 ## Tech Stack
 
@@ -33,10 +33,13 @@ npm run typecheck
 | `/services/[slug]` | 8 service pages — overview, benefits, process, equipment, gallery, FAQ, related |
 | `/projects` | Filterable masonry portfolio |
 | `/projects/[slug]` | 6 project pages — overview, stats, challenges/solutions, before/after, timeline, gallery |
-| `/news` + `/news/[slug]` | Newsroom with search, categories, pagination + article pages |
+| `/greenhouse` | Dedicated **Теплица** page — overview, what we grow, tech, growing cycle, gallery, address |
+| `/news` | **Press** page — external media coverage with source badges, search, filters, pagination (links out to outlets) |
 | `/careers` | Benefits, culture, open positions, application form |
-| `/contact` | Channels, inquiry form, office details, departments, map |
+| `/contact` | Channels, inquiry form, office + greenhouse addresses, departments, map |
 | `not-found` | Branded 404 |
+
+Content is fully Russian. Brand rendered from `public/logo-nord-white.png` (dark surfaces) and `public/logo-nord-green.png` (light navbar). Service & industry pictograms use emoji.
 
 ## Architecture
 

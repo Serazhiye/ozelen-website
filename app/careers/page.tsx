@@ -8,24 +8,24 @@ import { RevealGroup, RevealItem, Reveal } from "@/components/motion/Reveal";
 import { careerBenefits, openPositions } from "@/lib/data/company";
 
 export const metadata: Metadata = {
-  title: "Careers",
+  title: "Карьера",
   description:
-    "Join GreenSphere Infrastructure. Build the parks, boulevards and green systems that define how cities feel — with a team that respects craft and safety.",
+    "Присоединяйтесь к Nord Botanic. Стройте парки, бульвары и зелёные системы, определяющие облик городов, в команде, которая уважает мастерство и безопасность.",
 };
 
 export default function CareersPage() {
   return (
     <>
       <PageHero
-        eyebrow="Careers"
-        title="Build the landscapes that outlast us all."
-        intro="Join a multidisciplinary team of engineers, landscape architects, ecologists and site leaders shaping the future of urban green infrastructure."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Careers" }]}
+        eyebrow="Карьера"
+        title="Стройте ландшафты, которые переживут всех нас."
+        intro="Присоединяйтесь к междисциплинарной команде инженеров, ландшафтных архитекторов, экологов и руководителей участков, формирующих будущее городской зелёной инфраструктуры."
+        crumbs={[{ label: "Главная", href: "/" }, { label: "Карьера" }]}
         meta={[
-          { label: "Team", value: "350+" },
-          { label: "Disciplines", value: "12" },
-          { label: "Offices", value: "3" },
-          { label: "Open Roles", value: String(openPositions.length) },
+          { label: "Команда", value: "350+" },
+          { label: "Дисциплин", value: "12" },
+          { label: "Офисов", value: "3" },
+          { label: "Открытых вакансий", value: String(openPositions.length) },
         ]}
       />
 
@@ -35,9 +35,9 @@ export default function CareersPage() {
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <SectionHeading
-                eyebrow="Why join us"
-                title="Work that you can point to for the rest of your life."
-                intro="At GreenSphere you don't just complete tasks — you help build the parks and streets that a whole city grows up in."
+                eyebrow="Почему мы"
+                title="Работа, на которую можно указать всю оставшуюся жизнь."
+                intro="В Nord Botanic вы не просто выполняете задачи — вы помогаете строить парки и улицы, среди которых растёт целый город."
               />
             </div>
             <div className="lg:col-span-7">
@@ -60,14 +60,14 @@ export default function CareersPage() {
       <section className="bg-mist py-section">
         <Container>
           <SectionHeading
-            eyebrow="Corporate culture"
-            title="A team that respects craft."
-            intro="Collaborative, safety-first and genuinely proud of the work — see life inside GreenSphere."
+            eyebrow="Корпоративная культура"
+            title="Команда, уважающая мастерство."
+            intro="Слаженная, безопасная и по-настоящему гордящаяся работой — посмотрите на жизнь внутри Nord Botanic."
             className="max-w-2xl"
           />
           <div className="mt-14">
             <Gallery
-              labels={["Team on Site", "Design Review", "Fleet Yard", "Site Safety", "Nursery Visit", "Project Launch"]}
+              labels={["Команда на объекте", "Обсуждение проекта", "Автопарк", "Безопасность на площадке", "Визит в питомник", "Запуск проекта"]}
               columns={3}
             />
           </div>
@@ -78,9 +78,9 @@ export default function CareersPage() {
       <section className="bg-paper py-section">
         <Container>
           <SectionHeading
-            eyebrow="Open positions"
-            title="Current opportunities."
-            intro="Don't see the right role? Send a speculative application below — we're always looking for exceptional people."
+            eyebrow="Открытые вакансии"
+            title="Актуальные возможности."
+            intro="Не нашли подходящую роль? Отправьте инициативную заявку ниже — мы всегда ищем выдающихся людей."
             className="max-w-2xl"
           />
           <RevealGroup className="mt-14 divide-y divide-forest-900/10 border-y border-forest-900/10">
@@ -118,9 +118,9 @@ export default function CareersPage() {
           <div className="mx-auto max-w-3xl">
             <SectionHeading
               align="center"
-              eyebrow="Apply now"
-              title="Start your application."
-              intro="Tell us a little about yourself and the role you're interested in."
+              eyebrow="Отклик"
+              title="Начните заявку."
+              intro="Расскажите немного о себе и о роли, которая вам интересна."
               className="mx-auto"
             />
             <Reveal className="mt-12">

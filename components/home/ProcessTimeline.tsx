@@ -14,9 +14,9 @@ export function ProcessTimeline() {
     <section className="bg-mist py-section">
       <Container>
         <SectionHeading
-          eyebrow="Our process"
-          title="From first survey to lifelong stewardship."
-          intro="A disciplined, six-stage methodology that de-risks delivery and protects value long after handover."
+          eyebrow="Наш процесс"
+          title="От первого изыскания до пожизненного обслуживания."
+          intro="Дисциплинированная методология из шести этапов, снижающая риски и сохраняющая ценность спустя годы после сдачи."
           className="max-w-2xl"
         />
 

@@ -5,24 +5,24 @@ import { ProjectsExplorer } from "@/components/projects/ProjectsExplorer";
 import { CTASection } from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
-  title: "Projects",
+  title: "Проекты",
   description:
-    "Landmark green-infrastructure projects across government, transport, education and development — from metropolitan parks to airport gateways.",
+    "Знаковые проекты зелёной инфраструктуры в госсекторе, транспорте, образовании и застройке — от городских парков до ворот аэропортов.",
 };
 
 export default function ProjectsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Selected work"
-        title="Projects that reshape how cities feel."
-        intro="A portfolio of city-scale parks, boulevards and green systems delivered for governments, developers and institutions."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Projects" }]}
+        eyebrow="Избранные работы"
+        title="Проекты, меняющие облик городов."
+        intro="Портфель парков, бульваров и зелёных систем городского масштаба, реализованных для государства, застройщиков и институтов."
+        crumbs={[{ label: "Главная", href: "/" }, { label: "Проекты" }]}
         meta={[
-          { label: "Projects", value: "430+" },
-          { label: "Parkland", value: "310 ha" },
-          { label: "Corridors", value: "180 km" },
-          { label: "Trees", value: "1.2M" },
+          { label: "Проектов", value: "430+" },
+          { label: "Парков", value: "310 га" },
+          { label: "Коридоров", value: "180 км" },
+          { label: "Деревьев", value: "1,2 млн" },
         ]}
       />
 

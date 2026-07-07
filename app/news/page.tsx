@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
 import { Placeholder } from "@/components/ui/Placeholder";
@@ -9,9 +8,9 @@ import { Reveal } from "@/components/motion/Reveal";
 import { getFeaturedArticle } from "@/lib/data/news";
 
 export const metadata: Metadata = {
-  title: "News",
+  title: "Пресса",
   description:
-    "Engineering notes, project milestones and thinking on the future of urban green infrastructure from the GreenSphere newsroom.",
+    "СМИ о Nord Botanic: публикации деловых и отраслевых изданий о проектах, экологии, наградах и развитии компании.",
 };
 
 export default function NewsPage() {
@@ -20,32 +19,37 @@ export default function NewsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Newsroom"
-        title="Field notes on greener cities."
-        intro="Project milestones, engineering insight and perspective on the future of urban green infrastructure."
-        crumbs={[{ label: "Home", href: "/" }, { label: "News" }]}
+        eyebrow="Пресса о нас"
+        title="Что о Nord Botanic пишут СМИ."
+        intro="Публикации сторонних изданий о наших проектах, инженерных решениях, экологии и наградах."
+        crumbs={[{ label: "Главная", href: "/" }, { label: "Пресса" }]}
       />
 
       {/* Featured article */}
       <section className="bg-paper py-section">
         <Container>
           <Reveal>
-            <Link
-              href={`/news/${featured.slug}`}
+            <a
+              href={featured.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-14"
             >
-              <div className="overflow-hidden rounded-4xl">
+              <div className="relative overflow-hidden rounded-4xl">
                 <Placeholder
-                  label={featured.category}
+                  label={featured.source}
                   ratio="wide"
                   rounded="rounded-4xl"
                   className="transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
                 />
+                <span className="absolute left-5 top-5 rounded-full bg-sand-50/90 px-3 py-1 text-xs font-medium text-forest-900">
+                  {featured.source}
+                </span>
               </div>
               <div>
                 <div className="flex items-center gap-3 text-xs">
                   <span className="rounded-full bg-forest-50 px-3 py-1 font-medium uppercase tracking-[0.14em] text-forest-700">
-                    Featured
+                    Публикация
                   </span>
                   <span className="text-ink/45">{featured.date}</span>
                 </div>
@@ -56,13 +60,13 @@ export default function NewsPage() {
                   {featured.excerpt}
                 </p>
                 <div className="mt-8 flex items-center gap-3 text-sm font-medium text-forest-700">
-                  <span>Read article</span>
+                  <span>Читать в источнике</span>
                   <svg className="h-4 w-4 transition-transform duration-500 ease-out-expo group-hover:translate-x-1.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M4 12L12 4M6 4h6v6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
               </div>
-            </Link>
+            </a>
           </Reveal>
         </Container>
       </section>
@@ -74,7 +78,11 @@ export default function NewsPage() {
         </Container>
       </section>
 
-      <CTASection eyebrow="Stay in touch" title="Want project updates in your inbox?" intro="Subscribe to the GreenSphere newsletter for launches, insight and open roles." />
+      <CTASection
+        eyebrow="Медиазапросы"
+        title="Пишете о нас?"
+        intro="По вопросам прессы, интервью и материалов свяжитесь с нашим пресс-отделом — ответим оперативно."
+      />
     </>
   );
 }

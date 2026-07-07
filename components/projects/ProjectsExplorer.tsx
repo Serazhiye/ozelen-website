@@ -6,7 +6,8 @@ import { ProjectCard } from "@/components/cards/ProjectCard";
 import { projects } from "@/lib/data/projects";
 import { cn } from "@/lib/utils";
 
-const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category)))];
+const ALL = "Все";
+const categories = [ALL, ...Array.from(new Set(projects.map((p) => p.category)))];
 
 // Map project "span" to grid classes for a masonry-like rhythm.
 const spanClass: Record<string, string> = {
@@ -16,11 +17,11 @@ const spanClass: Record<string, string> = {
 };
 
 export function ProjectsExplorer() {
-  const [active, setActive] = useState("All");
+  const [active, setActive] = useState(ALL);
   const reduce = useReducedMotion();
 
   const filtered = useMemo(
-    () => (active === "All" ? projects : projects.filter((p) => p.category === active)),
+    () => (active === ALL ? projects : projects.filter((p) => p.category === active)),
     [active],
   );
 
