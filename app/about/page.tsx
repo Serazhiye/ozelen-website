@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CTASection } from "@/components/sections/CTASection";
-import { Gallery } from "@/components/sections/Gallery";
+import { StaticGallery } from "@/components/photos/StaticPhoto";
 import { Counter } from "@/components/motion/Counter";
 import { TeamGrid } from "@/components/team/TeamGrid";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
@@ -249,10 +249,7 @@ export default function AboutPage() {
             className="max-w-2xl"
           />
           <div className="mt-14">
-            <Gallery
-              labels={["Головной офис", "Проектная студия", "Инженерная лаборатория", "Питомник-партнёр", "Команда на объекте", "Автопарк"]}
-              columns={3}
-            />
+            <StaticGallery prefix="about-office" columns={3} />
           </div>
         </Container>
       </section>

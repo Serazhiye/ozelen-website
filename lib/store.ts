@@ -1,4 +1,5 @@
 import { projects as defaultProjectsData } from "@/lib/data/projects";
+import { services as defaultServicesData } from "@/lib/data/services";
 import { articles as defaultArticles } from "@/lib/data/news";
 import { leadership } from "@/lib/data/company";
 
@@ -49,9 +50,24 @@ export type PressDoc = {
   featured?: boolean;
 };
 
+export type ServiceDoc = {
+  id: string;
+  slug: string;
+  title: string;
+  icon: string;
+  tagline: string;
+  excerpt: string;
+  overview: string[];
+  benefits: { title: string; description: string }[];
+  image?: string;
+  gallery: GalleryItem[];
+};
+
 const TEAM_KEY = "nb_team_v1";
 const PROJECTS_KEY = "nb_projects_v1";
 const PRESS_KEY = "nb_press_v1";
+const SERVICES_KEY = "nb_services_v1";
+const STATIC_IMG_KEY = "nb_static_images_v1";
 
 /* ---------- defaults (seeded from static data) ---------- */
 
@@ -99,6 +115,18 @@ export const defaultPress: PressDoc[] = defaultArticles.map((a) => ({
   url: a.url,
   excerpt: a.excerpt,
   featured: a.featured,
+}));
+
+export const defaultServices: ServiceDoc[] = defaultServicesData.map((s) => ({
+  id: s.slug,
+  slug: s.slug,
+  title: s.title,
+  icon: s.icon,
+  tagline: s.tagline,
+  excerpt: s.excerpt,
+  overview: [...s.overview],
+  benefits: s.benefits.map((b) => ({ title: b.title, description: b.description })),
+  gallery: s.galleryLabels.map((label) => ({ label })),
 }));
 
 /* ---------- generic persistence ---------- */
@@ -152,6 +180,40 @@ export const resetPress = () => {
   window.localStorage.removeItem(PRESS_KEY);
   window.dispatchEvent(new CustomEvent(STORE_EVENT));
 };
+
+/* ---------- services ---------- */
+export const getServices = () => read<ServiceDoc[]>(SERVICES_KEY, defaultServices);
+export const saveServices = (v: ServiceDoc[]) => write(SERVICES_KEY, v);
+export const resetServices = () => {
+  window.localStorage.removeItem(SERVICES_KEY);
+  window.dispatchEvent(new CustomEvent(STORE_EVENT));
+};
+
+/* ---------- static (non-entity) images ---------- */
+export function getStaticImages(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = window.localStorage.getItem(STATIC_IMG_KEY);
+    return raw ? (JSON.parse(raw) as Record<string, string>) : {};
+  } catch {
+    return {};
+  }
+}
+
+export function setStaticImage(id: string, dataUrl: string | undefined): void {
+  if (typeof window === "undefined") return;
+  const map = getStaticImages();
+  if (dataUrl) map[id] = dataUrl;
+  else delete map[id];
+  try {
+    window.localStorage.setItem(STATIC_IMG_KEY, JSON.stringify(map));
+  } catch (e) {
+    // eslint-disable-next-line no-alert
+    alert("Не удалось сохранить: превышен лимит хранилища браузера. Уменьшите размер изображений.");
+    throw e;
+  }
+  window.dispatchEvent(new CustomEvent(STORE_EVENT));
+}
 
 /** Create a URL-safe slug from a title (latin + digits). */
 export function slugify(input: string): string {

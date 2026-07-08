@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Placeholder } from "@/components/ui/Placeholder";
 import { GoogleMap } from "@/components/ui/GoogleMap";
-import { Gallery } from "@/components/sections/Gallery";
+import { StaticPhoto, StaticGallery } from "@/components/photos/StaticPhoto";
 import { CTASection } from "@/components/sections/CTASection";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { greenhouse } from "@/lib/data/greenhouse";
@@ -37,7 +36,7 @@ export default function GreenhousePage() {
       <section className="bg-paper pt-12 lg:pt-16">
         <Container>
           <Reveal>
-            <Placeholder label="Тепличный комплекс — вид сверху" ratio="ultrawide" rounded="rounded-4xl" />
+            <StaticPhoto id="greenhouse-hero" ratio="ultrawide" rounded="rounded-4xl" />
           </Reveal>
         </Container>
       </section>
@@ -149,7 +148,7 @@ export default function GreenhousePage() {
         <Container>
           <SectionHeading eyebrow="Галерея" title="Внутри комплекса." className="max-w-2xl" />
           <div className="mt-14">
-            <Gallery labels={[...greenhouse.gallery]} columns={3} />
+            <StaticGallery prefix="greenhouse-gallery" columns={3} />
           </div>
         </Container>
       </section>
@@ -175,9 +174,9 @@ export default function GreenhousePage() {
             <div className="lg:col-span-7">
               <Reveal>
                 <GoogleMap
-                  query="посёлок Станционный, Кокшетау, Акмолинская область, Казахстан"
+                  query="Казахстан, Акмолинская область, посёлок Станционный"
                   title="Тепличный комплекс Nord Botanic на карте Google"
-                  zoom={12}
+                  zoom={13}
                   className="aspect-[16/11] w-full"
                 />
               </Reveal>

@@ -1,12 +1,16 @@
+"use client";
+
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { ServiceCard } from "@/components/cards/ServiceCard";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { Glow } from "@/components/motion/Glow";
-import { services } from "@/lib/data/services";
+import { useServices } from "@/components/admin/useStore";
 
 export function ServicesGrid() {
+  const services = useServices();
+
   return (
     <section className="relative overflow-hidden bg-mist py-section">
       <Glow className="left-[-8rem] top-[-6rem] h-[28rem] w-[28rem]" />
@@ -28,7 +32,7 @@ export function ServicesGrid() {
 
         <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => (
-            <RevealItem key={service.slug}>
+            <RevealItem key={service.id}>
               <ServiceCard service={service} className="h-full" />
             </RevealItem>
           ))}

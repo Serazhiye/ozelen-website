@@ -6,8 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Logo } from "./Logo";
 import { mainNav, site } from "@/lib/site";
-import { services } from "@/lib/data/services";
-import { projects } from "@/lib/data/projects";
+import { useServices, useProjects } from "@/components/admin/useStore";
 import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { cn } from "@/lib/utils";
 
@@ -19,13 +18,23 @@ const megaFor = (href: string): MegaKey =>
 
 export function Navbar() {
   const pathname = usePathname();
+  const services = useServices();
+  const projects = useProjects();
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mega, setMega] = useState<MegaKey>(null);
 
-  // Solidify the bar once the user scrolls off the hero. The header stays visible.
+  // Solidify after the hero; hide on scroll-down, reveal on scroll-up.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      if (y > lastY && y > 140) setHidden(true);
+      else if (y < lastY) setHidden(false);
+      lastY = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -55,6 +64,7 @@ export function Navbar() {
         solid
           ? "border-b border-forest-900/8 bg-paper/80 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent",
+        hidden && !mega && !mobileOpen ? "-translate-y-full" : "translate-y-0",
       )}
       onMouseLeave={() => setMega(null)}
     >

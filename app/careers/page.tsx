@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Gallery } from "@/components/sections/Gallery";
+import { StaticGallery } from "@/components/photos/StaticPhoto";
 import { TeamGrid } from "@/components/team/TeamGrid";
 import { CareersPositions } from "@/components/careers/CareersPositions";
 import { RevealGroup, RevealItem, Reveal } from "@/components/motion/Reveal";
@@ -81,10 +81,7 @@ export default function CareersPage() {
             className="max-w-2xl"
           />
           <div className="mt-14">
-            <Gallery
-              labels={["Команда на объекте", "Обсуждение проекта", "Автопарк", "Безопасность на площадке", "Визит в питомник", "Запуск проекта"]}
-              columns={3}
-            />
+            <StaticGallery prefix="careers-culture" columns={3} />
           </div>
         </Container>
       </section>

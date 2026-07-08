@@ -21,12 +21,19 @@ import {
   getPress,
   savePress,
   resetPress,
+  getServices,
+  saveServices,
+  resetServices,
+  getStaticImages,
+  setStaticImage,
   slugify,
   uid,
   type TeamDoc,
   type ProjectDoc,
   type PressDoc,
+  type ServiceDoc,
 } from "@/lib/store";
+import { photoSlots } from "@/lib/photos";
 
 const departments = [
   "Проектирование", "Инженерия", "Строительство", "Обслуживание",
@@ -309,6 +316,113 @@ export function ProjectsTab() {
         {items.length === 0 && <p className="rounded-2xl border border-dashed border-forest-900/15 px-4 py-6 text-center text-sm text-ink/45">Проектов пока нет.</p>}
       </div>
       <AddButton onClick={addProject}>Добавить проект</AddButton>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Services                                                           */
+/* ------------------------------------------------------------------ */
+
+export function ServicesTab() {
+  const [items, setItems] = useState<ServiceDoc[]>([]);
+  useEffect(() => setItems(getServices()), []);
+  const persist = (next: ServiceDoc[]) => { setItems(next); saveServices(next); };
+  const update = (i: number, patch: Partial<ServiceDoc>) => persist(items.map((s, j) => (j === i ? { ...s, ...patch } : s)));
+
+  const addService = () => persist([
+    ...items,
+    {
+      id: uid("svc"), slug: `usluga-${items.length + 1}`, title: "Новая услуга", icon: "🌿",
+      tagline: "Короткое описание услуги.", excerpt: "Описание для карточки.",
+      overview: ["Описание услуги."], benefits: [], gallery: [],
+    },
+  ]);
+
+  return (
+    <div className="space-y-5">
+      <SectionHead title="Услуги" onReset={() => { resetServices(); setItems(getServices()); }} />
+      <div className="space-y-4">
+        {items.map((s, i) => (
+          <details key={s.id} className="rounded-3xl border border-forest-900/8 p-5">
+            <summary className="flex cursor-pointer items-center justify-between gap-4">
+              <span className="flex min-w-0 items-center gap-2">
+                <span className="text-xl" aria-hidden="true">{s.icon}</span>
+                <span className="truncate text-sm font-semibold text-ink">{s.title}</span>
+              </span>
+              <DeleteButton label={`Удалить ${s.title}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); persist(items.filter((_, j) => j !== i)); }} />
+            </summary>
+            <div className="mt-4 space-y-4">
+              <ImageField label="Фото услуги (фон карточки и шапка)" value={s.image} onChange={(v) => update(i, { image: v })} />
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div className="sm:col-span-2"><Label htmlFor={`sv-title-${i}`}>Название</Label><Input id={`sv-title-${i}`} value={s.title} onChange={(e) => update(i, { title: e.target.value })} /></div>
+                <div><Label htmlFor={`sv-icon-${i}`}>Иконка (эмодзи)</Label><Input id={`sv-icon-${i}`} value={s.icon} onChange={(e) => update(i, { icon: e.target.value })} /></div>
+                <div><Label htmlFor={`sv-slug-${i}`}>URL (slug)</Label><Input id={`sv-slug-${i}`} value={s.slug} onChange={(e) => update(i, { slug: slugify(e.target.value) })} /></div>
+                <div className="sm:col-span-2"><Label htmlFor={`sv-tag-${i}`}>Подзаголовок</Label><Input id={`sv-tag-${i}`} value={s.tagline} onChange={(e) => update(i, { tagline: e.target.value })} /></div>
+                <div className="sm:col-span-2"><Label htmlFor={`sv-exc-${i}`}>Описание карточки</Label><Textarea id={`sv-exc-${i}`} value={s.excerpt} onChange={(e) => update(i, { excerpt: e.target.value })} className="min-h-16" /></div>
+                <div className="sm:col-span-2"><Label htmlFor={`sv-ov-${i}`}>Обзор (абзацы с новой строки)</Label><Textarea id={`sv-ov-${i}`} value={s.overview.join("\n\n")} onChange={(e) => update(i, { overview: e.target.value.split(/\n\n+/).filter(Boolean) })} className="min-h-24" /></div>
+              </div>
+
+              {/* Gallery */}
+              <div>
+                <p className="mb-2 text-xs font-medium uppercase tracking-wide text-forest-600">Галерея</p>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {s.gallery.map((g, k) => (
+                    <div key={k} className="rounded-2xl border border-forest-900/8 p-3">
+                      <ImageField label={`Фото ${k + 1}`} value={g.image} onChange={(v) => update(i, { gallery: s.gallery.map((x, m) => (m === k ? { ...x, image: v } : x)) })} />
+                      <div className="mt-2 flex items-center gap-2">
+                        <Input aria-label="Подпись" value={g.label} onChange={(e) => update(i, { gallery: s.gallery.map((x, m) => (m === k ? { ...x, label: e.target.value } : x)) })} placeholder="Подпись" />
+                        <DeleteButton label="Удалить фото" onClick={() => update(i, { gallery: s.gallery.filter((_, m) => m !== k) })} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <button type="button" onClick={() => update(i, { gallery: [...s.gallery, { label: `Фото ${s.gallery.length + 1}` }] })} className="mt-2 text-xs font-medium text-forest-700 link-underline">＋ Добавить фото</button>
+              </div>
+            </div>
+          </details>
+        ))}
+        {items.length === 0 && <p className="rounded-2xl border border-dashed border-forest-900/15 px-4 py-6 text-center text-sm text-ink/45">Услуг пока нет.</p>}
+      </div>
+      <AddButton onClick={addService}>Добавить услугу</AddButton>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Static photos                                                      */
+/* ------------------------------------------------------------------ */
+
+export function PhotosTab() {
+  const [map, setMap] = useState<Record<string, string>>({});
+  useEffect(() => setMap(getStaticImages()), []);
+  const change = (id: string, dataUrl: string | undefined) => {
+    setStaticImage(id, dataUrl);
+    setMap(getStaticImages());
+  };
+
+  return (
+    <div className="space-y-5">
+      <h2 className="text-lg font-semibold tracking-tight text-ink">Фотографии сайта</h2>
+      <p className="text-sm text-ink/55">
+        Постоянные фото макета (не из проектов/команды/прессы). У каждого — уникальный номер и расположение.
+      </p>
+      <div className="space-y-3">
+        {photoSlots.map((slot) => (
+          <div key={slot.id} className="flex flex-col gap-3 rounded-3xl border border-forest-900/8 p-4 sm:flex-row sm:items-center">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-forest-900 text-sm font-semibold text-sand-50">
+              {slot.number}
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm font-semibold text-ink">{slot.label}</p>
+              <p className="truncate text-xs text-ink/50">{slot.location}</p>
+            </div>
+            <div className="w-full sm:w-52">
+              <ImageField label="" value={map[slot.id]} aspect="aspect-[16/10]" onChange={(v) => change(slot.id, v)} />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

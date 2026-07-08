@@ -6,12 +6,16 @@ import {
   defaultTeam,
   defaultProjects,
   defaultPress,
+  defaultServices,
   getTeam,
   getProjects,
   getPress,
+  getServices,
+  getStaticImages,
   type TeamDoc,
   type ProjectDoc,
   type PressDoc,
+  type ServiceDoc,
 } from "@/lib/store";
 
 function useCollection<T>(getter: () => T[], seed: T[]): T[] {
@@ -34,3 +38,19 @@ function useCollection<T>(getter: () => T[], seed: T[]): T[] {
 export const useTeam = () => useCollection<TeamDoc>(getTeam, defaultTeam);
 export const useProjects = () => useCollection<ProjectDoc>(getProjects, defaultProjects);
 export const usePress = () => useCollection<PressDoc>(getPress, defaultPress);
+export const useServices = () => useCollection<ServiceDoc>(getServices, defaultServices);
+
+export function useStaticImages(): Record<string, string> {
+  const [map, setMap] = useState<Record<string, string>>({});
+  useEffect(() => {
+    const sync = () => setMap(getStaticImages());
+    sync();
+    window.addEventListener(STORE_EVENT, sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.removeEventListener(STORE_EVENT, sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, []);
+  return map;
+}

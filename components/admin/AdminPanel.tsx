@@ -4,14 +4,16 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Input, Label } from "@/components/ui/Field";
 import { DEFAULT_PASSWORD, verifyPassword } from "@/lib/admin";
-import { PositionsTab, TeamTab, ProjectsTab, PressTab, PasswordTab } from "./Tabs";
+import { PositionsTab, TeamTab, ProjectsTab, PressTab, ServicesTab, PhotosTab, PasswordTab } from "./Tabs";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const SECTIONS = [
   { id: "projects", label: "Проекты", icon: "🏗️", hint: "Добавить, изменить, удалить проекты и фото" },
+  { id: "services", label: "Услуги", icon: "🌿", hint: "Услуги, описания и фото" },
   { id: "team", label: "Команда", icon: "👥", hint: "Сотрудники, должности и портреты" },
   { id: "press", label: "Пресса", icon: "📰", hint: "Публикации СМИ и обложки" },
+  { id: "photos", label: "Фото сайта", icon: "🖼️", hint: "Постоянные фото макета по номерам" },
   { id: "positions", label: "Вакансии", icon: "💼", hint: "Открытые вакансии" },
   { id: "password", label: "Пароль", icon: "🔑", hint: "Сменить пароль входа" },
 ] as const;
@@ -198,8 +200,10 @@ export function AdminPanel({ open, onClose }: { open: boolean; onClose: () => vo
                     ) : (
                       <>
                         {view === "projects" && <ProjectsTab />}
+                        {view === "services" && <ServicesTab />}
                         {view === "team" && <TeamTab />}
                         {view === "press" && <PressTab />}
+                        {view === "photos" && <PhotosTab />}
                         {view === "positions" && <PositionsTab />}
                         {view === "password" && <PasswordTab />}
                       </>

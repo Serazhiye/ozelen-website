@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Counter } from "@/components/motion/Counter";
+import { StaticPhoto } from "@/components/photos/StaticPhoto";
 import { companyStats } from "@/lib/site";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -22,20 +23,15 @@ export function Hero() {
 
   return (
     <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-forest-950 text-sand-50">
-      {/* Background placeholder + ambient light */}
-      <div className="placeholder-surface--dark absolute inset-0" aria-hidden="true" />
-      <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/40 to-forest-950/70" aria-hidden="true" />
+      {/* Background photo (replaceable from admin) + darkening overlays */}
+      <StaticPhoto id="home-hero" fill dark hideCaption rounded="rounded-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/50 to-forest-950/75" aria-hidden="true" />
       <motion.div
         aria-hidden="true"
         className="pointer-events-none absolute -right-40 top-10 h-[42rem] w-[42rem] rounded-full bg-forest-500/15 blur-3xl"
         animate={reduce ? undefined : { scale: [1, 1.08, 1], opacity: [0.5, 0.8, 0.5] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
-
-      {/* Placeholder caption, top-corner */}
-      <span className="absolute right-6 top-28 text-[0.7rem] font-medium uppercase tracking-[0.16em] text-sand-100/40 lg:right-12">
-        Крупный кадр проекта — съёмка с дрона
-      </span>
 
       <Container className="relative z-10 pb-16 pt-40 lg:pb-24">
         <motion.div variants={container} initial="hidden" animate="show" className="max-w-5xl">
