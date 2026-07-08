@@ -3,26 +3,24 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ProjectCard } from "@/components/cards/ProjectCard";
-import { projects } from "@/lib/data/projects";
+import { useProjects } from "@/components/admin/useStore";
 import { cn } from "@/lib/utils";
 
 const ALL = "Все";
-const categories = [ALL, ...Array.from(new Set(projects.map((p) => p.category)))];
-
-// Map project "span" to grid classes for a masonry-like rhythm.
-const spanClass: Record<string, string> = {
-  lg: "lg:col-span-2",
-  md: "lg:col-span-1",
-  sm: "lg:col-span-1",
-};
 
 export function ProjectsExplorer() {
+  const projects = useProjects();
   const [active, setActive] = useState(ALL);
   const reduce = useReducedMotion();
 
+  const categories = useMemo(
+    () => [ALL, ...Array.from(new Set(projects.map((p) => p.category)))],
+    [projects],
+  );
+
   const filtered = useMemo(
     () => (active === ALL ? projects : projects.filter((p) => p.category === active)),
-    [active],
+    [active, projects],
   );
 
   return (
@@ -49,24 +47,24 @@ export function ProjectsExplorer() {
       {/* Grid */}
       <motion.div layout className="mt-10 grid gap-8 lg:grid-cols-2">
         <AnimatePresence mode="popLayout">
-          {filtered.map((project) => (
+          {filtered.map((project, i) => (
             <motion.div
-              key={project.slug}
+              key={project.id}
               layout={!reduce}
               initial={{ opacity: 0, y: reduce ? 0 : 16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: reduce ? 1 : 0.98 }}
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              className={cn(spanClass[project.span])}
             >
-              <ProjectCard
-                project={project}
-                ratio={project.span === "lg" ? "ultrawide" : "wide"}
-              />
+              <ProjectCard project={project} number={i + 1} ratio="wide" />
             </motion.div>
           ))}
         </AnimatePresence>
       </motion.div>
+
+      {filtered.length === 0 && (
+        <p className="mt-16 text-center text-ink/50">В этой категории проектов пока нет.</p>
+      )}
     </div>
   );
 }

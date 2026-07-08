@@ -3,26 +3,33 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ArticleCard } from "@/components/cards/ArticleCard";
-import { articles, newsCategories } from "@/lib/data/news";
+import { usePress } from "@/components/admin/useStore";
 import { cn } from "@/lib/utils";
 
 const PAGE_SIZE = 6;
+const ALL = "Все";
 
 export function NewsExplorer() {
-  const [category, setCategory] = useState<string>("All");
+  const press = usePress();
+  const [category, setCategory] = useState<string>(ALL);
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
   const reduce = useReducedMotion();
 
+  const categories = useMemo(
+    () => [ALL, ...Array.from(new Set(press.map((a) => a.category)))],
+    [press],
+  );
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return articles.filter((a) => {
-      const matchesCat = category === "All" || a.category === category;
+    return press.filter((a) => {
+      const matchesCat = category === ALL || a.category === category;
       const matchesQuery =
         !q || a.title.toLowerCase().includes(q) || a.excerpt.toLowerCase().includes(q);
       return matchesCat && matchesQuery;
     });
-  }, [category, query]);
+  }, [category, query, press]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const current = Math.min(page, totalPages);
@@ -38,16 +45,14 @@ export function NewsExplorer() {
       {/* Controls */}
       <div className="flex flex-col gap-6 border-b border-forest-900/10 pb-8 lg:flex-row lg:items-center lg:justify-between">
         <div className="no-scrollbar flex gap-2 overflow-x-auto">
-          {newsCategories.map((cat) => (
+          {categories.map((cat) => (
             <button
               key={cat}
               type="button"
               onClick={() => reset(() => setCategory(cat))}
               className={cn(
                 "shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300",
-                category === cat
-                  ? "bg-forest-900 text-sand-50"
-                  : "text-ink/55 hover:text-ink",
+                category === cat ? "bg-forest-900 text-sand-50" : "text-ink/55 hover:text-ink",
               )}
             >
               {cat}
@@ -82,16 +87,16 @@ export function NewsExplorer() {
       {paged.length > 0 ? (
         <motion.div layout className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
-            {paged.map((article) => (
+            {paged.map((article, i) => (
               <motion.div
-                key={article.slug}
+                key={article.id}
                 layout={!reduce}
                 initial={{ opacity: 0, y: reduce ? 0 : 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               >
-                <ArticleCard article={article} />
+                <ArticleCard article={article} number={(current - 1) * PAGE_SIZE + i + 1} />
               </motion.div>
             ))}
           </AnimatePresence>

@@ -4,14 +4,13 @@ import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CTASection } from "@/components/sections/CTASection";
 import { Gallery } from "@/components/sections/Gallery";
-import { Placeholder } from "@/components/ui/Placeholder";
 import { Counter } from "@/components/motion/Counter";
+import { TeamGrid } from "@/components/team/TeamGrid";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { companyStats } from "@/lib/site";
 import {
   awards,
   certifications,
-  leadership,
   milestones,
   values,
 } from "@/lib/data/company";
@@ -196,18 +195,7 @@ export default function AboutPage() {
             intro="Междисциплинарный совет, объединяющий инженерию, ландшафт, экологию и операции."
             className="max-w-2xl"
           />
-          <RevealGroup className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {leadership.map((person) => (
-              <RevealItem key={person.name}>
-                <div className="group">
-                  <Placeholder label={`Портрет — ${person.name}`} ratio="portrait" rounded="rounded-3xl" />
-                  <h3 className="mt-5 text-lg font-semibold text-ink">{person.name}</h3>
-                  <p className="text-sm font-medium text-forest-700">{person.role}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/55">{person.bio}</p>
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
+          <TeamGrid columns={3} />
         </Container>
       </section>
 

@@ -1,12 +1,14 @@
+"use client";
+
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { ArticleCard } from "@/components/cards/ArticleCard";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
-import { articles } from "@/lib/data/news";
+import { usePress } from "@/components/admin/useStore";
 
 export function NewsPreview() {
-  const latest = articles.slice(0, 3);
+  const latest = usePress().slice(0, 3);
 
   return (
     <section className="bg-mist py-section">
@@ -26,9 +28,9 @@ export function NewsPreview() {
         </div>
 
         <RevealGroup className="mt-14 grid gap-8 md:grid-cols-3">
-          {latest.map((article) => (
-            <RevealItem key={article.slug}>
-              <ArticleCard article={article} />
+          {latest.map((article, i) => (
+            <RevealItem key={article.id}>
+              <ArticleCard article={article} number={i + 1} />
             </RevealItem>
           ))}
         </RevealGroup>

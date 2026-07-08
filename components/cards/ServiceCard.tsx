@@ -9,7 +9,7 @@ export function ServiceCard({ service, className }: { service: Service; classNam
     <Link
       href={`/services/${service.slug}`}
       className={cn(
-        "group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-forest-900/8 bg-paper p-8 transition-all duration-500 ease-out-expo hover:-translate-y-1 hover:border-forest-900/15 hover:shadow-lift",
+        "group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-forest-900/8 bg-paper p-8 shadow-subtle transition-all duration-500 ease-out-expo hover:-translate-y-1.5 hover:border-forest-900/15 hover:shadow-lift",
         className,
       )}
     >
@@ -17,8 +17,8 @@ export function ServiceCard({ service, className }: { service: Service; classNam
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-forest-50/0 to-forest-50 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
       <div className="relative">
-        <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-forest-50 transition-colors duration-500 group-hover:bg-forest-900">
-          <ServiceIcon emoji={service.icon} className="text-3xl" />
+        <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-forest-50 transition-all duration-500 ease-out-expo group-hover:-rotate-6 group-hover:scale-105 group-hover:bg-forest-100">
+          <ServiceIcon emoji={service.icon} className="text-3xl transition-transform duration-500 ease-out-expo group-hover:scale-110" />
         </span>
         <h3 className="mt-7 text-xl font-semibold tracking-tight text-ink">{service.title}</h3>
         <p className="mt-3 text-sm leading-relaxed text-ink/55">{service.excerpt}</p>
