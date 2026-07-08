@@ -1,9 +1,26 @@
-import type { Article } from "@/lib/data/news";
 import { Placeholder } from "@/components/ui/Placeholder";
 import { cn } from "@/lib/utils";
 
+export type ArticleCardData = {
+  title: string;
+  source: string;
+  category: string;
+  date: string;
+  url: string;
+  excerpt: string;
+  image?: string;
+};
+
 /** External-press card — links out to the publishing outlet in a new tab. */
-export function ArticleCard({ article, className }: { article: Article; className?: string }) {
+export function ArticleCard({
+  article,
+  number,
+  className,
+}: {
+  article: ArticleCardData;
+  number?: number;
+  className?: string;
+}) {
   return (
     <a
       href={article.url}
@@ -14,11 +31,13 @@ export function ArticleCard({ article, className }: { article: Article; classNam
       <div className="relative overflow-hidden rounded-3xl">
         <Placeholder
           label={article.source}
+          src={article.image}
+          number={number}
           ratio="wide"
           rounded="rounded-3xl"
           className="transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
         />
-        <span className="absolute left-4 top-4 rounded-full bg-sand-50/90 px-3 py-1 text-[0.7rem] font-medium text-forest-900">
+        <span className="absolute right-4 top-4 z-10 rounded-full bg-sand-50/90 px-3 py-1 text-[0.7rem] font-medium text-forest-900">
           {article.source}
         </span>
       </div>

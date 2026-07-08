@@ -1,12 +1,17 @@
+"use client";
+
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { ProjectCard } from "@/components/cards/ProjectCard";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
-import { projects } from "@/lib/data/projects";
+import { useProjects } from "@/components/admin/useStore";
+
+const spanClasses = ["lg:col-span-4", "lg:col-span-2", "lg:col-span-2", "lg:col-span-2", "lg:col-span-2"];
+const ratios = ["ultrawide", "portrait", "video", "video", "video"] as const;
 
 export function FeaturedProjects() {
-  const featured = projects.slice(0, 5);
+  const featured = useProjects().slice(0, 5);
 
   return (
     <section className="bg-paper py-section">
@@ -26,22 +31,11 @@ export function FeaturedProjects() {
         </div>
 
         <RevealGroup className="mt-14 grid gap-8 lg:grid-cols-6">
-          {/* Feature project spans wide */}
-          <RevealItem className="lg:col-span-4">
-            <ProjectCard project={featured[0]} ratio="ultrawide" />
-          </RevealItem>
-          <RevealItem className="lg:col-span-2">
-            <ProjectCard project={featured[1]} ratio="portrait" />
-          </RevealItem>
-          <RevealItem className="lg:col-span-2">
-            <ProjectCard project={featured[2]} ratio="video" />
-          </RevealItem>
-          <RevealItem className="lg:col-span-2">
-            <ProjectCard project={featured[3]} ratio="video" />
-          </RevealItem>
-          <RevealItem className="lg:col-span-2">
-            <ProjectCard project={featured[4]} ratio="video" />
-          </RevealItem>
+          {featured.map((project, i) => (
+            <RevealItem key={project.id} className={spanClasses[i] ?? "lg:col-span-2"}>
+              <ProjectCard project={project} number={i + 1} ratio={ratios[i] ?? "video"} />
+            </RevealItem>
+          ))}
         </RevealGroup>
       </Container>
     </section>

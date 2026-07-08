@@ -3,10 +3,11 @@ import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Gallery } from "@/components/sections/Gallery";
-import { ApplicationForm } from "@/components/forms/ApplicationForm";
+import { TeamGrid } from "@/components/team/TeamGrid";
 import { CareersPositions } from "@/components/careers/CareersPositions";
 import { RevealGroup, RevealItem, Reveal } from "@/components/motion/Reveal";
 import { careerBenefits, openPositions } from "@/lib/data/company";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Карьера",
@@ -30,7 +31,7 @@ export default function CareersPage() {
         ]}
       />
 
-      {/* Why join */}
+      {/* Why join (first section) */}
       <section className="bg-paper py-section">
         <Container>
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
@@ -45,7 +46,7 @@ export default function CareersPage() {
               <RevealGroup className="grid gap-4 sm:grid-cols-2">
                 {careerBenefits.map((b) => (
                   <RevealItem key={b.title}>
-                    <div className="h-full rounded-3xl border border-forest-900/8 bg-mist p-7">
+                    <div className="h-full rounded-3xl border border-forest-900/8 bg-mist p-7 shadow-subtle">
                       <h3 className="text-base font-semibold text-ink">{b.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-ink/55">{b.description}</p>
                     </div>
@@ -57,8 +58,21 @@ export default function CareersPage() {
         </Container>
       </section>
 
-      {/* Culture gallery */}
+      {/* Team — placed right below the first section */}
       <section className="bg-mist py-section">
+        <Container>
+          <SectionHeading
+            eyebrow="Наша команда"
+            title="Люди, с которыми вы будете работать."
+            intro="Междисциплинарная команда, объединяющая инженерию, ландшафт, экологию и операции."
+            className="max-w-2xl"
+          />
+          <TeamGrid columns={3} />
+        </Container>
+      </section>
+
+      {/* Culture gallery */}
+      <section className="bg-paper py-section">
         <Container>
           <SectionHeading
             eyebrow="Корпоративная культура"
@@ -76,33 +90,57 @@ export default function CareersPage() {
       </section>
 
       {/* Open positions */}
-      <section className="bg-paper py-section">
+      <section className="bg-mist py-section">
         <Container>
           <SectionHeading
             eyebrow="Открытые вакансии"
             title="Актуальные возможности."
-            intro="Не нашли подходящую роль? Отправьте инициативную заявку ниже — мы всегда ищем выдающихся людей."
+            intro="Не нашли подходящую роль? Напишите нам в WhatsApp — мы всегда ищем выдающихся людей."
             className="max-w-2xl"
           />
           <CareersPositions />
         </Container>
       </section>
 
-      {/* Application form */}
-      <section id="apply" className="scroll-mt-24 bg-mist py-section">
+      {/* Apply → WhatsApp (no form) */}
+      <section id="apply" className="scroll-mt-24 bg-paper py-section">
         <Container>
-          <div className="mx-auto max-w-3xl">
-            <SectionHeading
-              align="center"
-              eyebrow="Отклик"
-              title="Начните заявку."
-              intro="Расскажите немного о себе и о роли, которая вам интересна."
-              className="mx-auto"
-            />
-            <Reveal className="mt-12">
-              <ApplicationForm />
-            </Reveal>
-          </div>
+          <Reveal>
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-forest-950 px-8 py-14 text-center text-sand-50 sm:px-14 lg:py-20">
+              <div className="placeholder-surface--dark absolute inset-0 opacity-50" aria-hidden="true" />
+              <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-forest-500/20 blur-3xl" aria-hidden="true" />
+              <div className="relative mx-auto max-w-2xl">
+                <span className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-4xl" role="img" aria-hidden="true">
+                  💬
+                </span>
+                <h2 className="mt-6 text-display-sm font-semibold tracking-tight text-balance">
+                  Откликнуться — через WhatsApp
+                </h2>
+                <p className="mx-auto mt-5 max-w-md leading-relaxed text-sand-100/70">
+                  Никаких форм. Напишите нам в WhatsApp, укажите интересующую позицию и приложите резюме — ответим в течение одного рабочего дня.
+                </p>
+                <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+                  <a
+                    href={site.contact.whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2.5 rounded-full bg-sand-50 px-8 py-4 text-[0.95rem] font-medium text-forest-900 shadow-subtle transition-all duration-500 ease-out-expo hover:-translate-y-0.5 hover:bg-white hover:shadow-lift"
+                  >
+                    Написать в WhatsApp
+                    <svg className="h-4 w-4 transition-transform duration-500 ease-out-expo group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                  <a
+                    href={`mailto:careers@nordbotanic.kz`}
+                    className="inline-flex items-center gap-2 rounded-full border border-sand-100/25 px-7 py-4 text-sm font-medium text-sand-50 transition-colors hover:border-sand-100/50 hover:bg-white/5"
+                  >
+                    careers@nordbotanic.kz
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </Container>
       </section>
     </>

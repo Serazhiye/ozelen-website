@@ -8,11 +8,15 @@ import { Placeholder } from "@/components/ui/Placeholder";
  * Drag or use the keyboard (arrow keys) to wipe between states.
  */
 export function BeforeAfter({
-  beforeLabel = "Before — Existing Site",
-  afterLabel = "After — Completed",
+  beforeLabel = "До — исходный участок",
+  afterLabel = "После — готово",
+  beforeImage,
+  afterImage,
 }: {
   beforeLabel?: string;
   afterLabel?: string;
+  beforeImage?: string;
+  afterImage?: string;
 }) {
   const [pos, setPos] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -53,7 +57,7 @@ export function BeforeAfter({
       onPointerUp={onPointerUp}
     >
       {/* After (full width, base layer) */}
-      <Placeholder label={afterLabel} ratio="ultrawide" rounded="rounded-4xl" />
+      <Placeholder label={afterLabel} src={afterImage} ratio="ultrawide" rounded="rounded-4xl" />
 
       {/* Before (clipped overlay) */}
       <div
@@ -65,7 +69,7 @@ export function BeforeAfter({
           className="h-full"
           style={{ width: containerRef.current ? `${containerRef.current.clientWidth}px` : "100%" }}
         >
-          <Placeholder label={beforeLabel} ratio="ultrawide" dark rounded="rounded-none" className="h-full" />
+          <Placeholder label={beforeLabel} src={beforeImage} ratio="ultrawide" dark rounded="rounded-none" className="h-full" />
         </div>
       </div>
 
@@ -92,11 +96,11 @@ export function BeforeAfter({
       </div>
 
       {/* Corner labels */}
-      <span className="pointer-events-none absolute left-5 top-5 rounded-full bg-forest-950/70 px-3 py-1 text-xs font-medium text-sand-50">
-        Before
+      <span className="pointer-events-none absolute left-5 top-5 z-10 rounded-full bg-forest-950/70 px-3 py-1 text-xs font-medium text-sand-50">
+        До
       </span>
-      <span className="pointer-events-none absolute right-5 top-5 rounded-full bg-sand-50/90 px-3 py-1 text-xs font-medium text-forest-900">
-        After
+      <span className="pointer-events-none absolute right-5 top-5 z-10 rounded-full bg-sand-50/90 px-3 py-1 text-xs font-medium text-forest-900">
+        После
       </span>
     </div>
   );

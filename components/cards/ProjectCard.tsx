@@ -1,31 +1,38 @@
 import Link from "next/link";
-import type { Project } from "@/lib/data/projects";
 import { Placeholder } from "@/components/ui/Placeholder";
 import { cn } from "@/lib/utils";
 
-type ProjectCardProps = {
-  project: Project;
-  className?: string;
-  /** Placeholder aspect ratio override for masonry layouts. */
-  ratio?: "video" | "portrait" | "wide" | "square" | "ultrawide";
+export type ProjectCardData = {
+  slug: string;
+  title: string;
+  category: string;
+  location: string;
+  year: string;
+  area: string;
+  heroImage?: string;
 };
 
-/** Featured project card — placeholder image with metadata footer. */
-export function ProjectCard({ project, className, ratio = "video" }: ProjectCardProps) {
+type ProjectCardProps = {
+  project: ProjectCardData;
+  className?: string;
+  ratio?: "video" | "portrait" | "wide" | "square" | "ultrawide";
+  number?: number;
+};
+
+/** Featured project card — hero image (or numbered placeholder) with metadata footer. */
+export function ProjectCard({ project, className, ratio = "video", number }: ProjectCardProps) {
   return (
-    <Link
-      href={`/projects/${project.slug}`}
-      className={cn("group block", className)}
-    >
+    <Link href={`/projects/${project.slug}`} className={cn("group block", className)}>
       <div className="relative overflow-hidden rounded-3xl">
         <Placeholder
           label={`${project.title} — вид сверху`}
+          src={project.heroImage}
+          number={number}
           ratio={ratio}
           dark
           rounded="rounded-3xl"
           className="transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
         />
-        {/* Overlay gradient + hover reveal */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest-950/70 via-forest-950/10 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-6">
           <span className="inline-flex rounded-full bg-sand-50/90 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.14em] text-forest-900">
