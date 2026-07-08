@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { Placeholder } from "@/components/ui/Placeholder";
+import { StaticPhoto } from "@/components/photos/StaticPhoto";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -49,7 +49,7 @@ export function AboutIntro() {
           {/* Right: image + inset stat */}
           <div className="lg:col-span-6">
             <Reveal delay={0.1} className="relative">
-              <Placeholder label="Команда на объекте" ratio="portrait" rounded="rounded-4xl" />
+              <StaticPhoto id="home-portrait" ratio="portrait" rounded="rounded-4xl" />
               <div className="absolute -bottom-6 -left-6 hidden rounded-3xl border border-forest-900/8 bg-paper p-7 shadow-lift sm:block">
                 <p className="text-4xl font-semibold tracking-tight text-forest-800">18</p>
                 <p className="mt-1 max-w-[9rem] text-sm text-ink/55">лет создаём зелёные города</p>

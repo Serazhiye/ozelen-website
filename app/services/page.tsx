@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
-import { ServiceCard } from "@/components/cards/ServiceCard";
+import { ServicesList } from "@/components/services/ServicesList";
 import { CTASection } from "@/components/sections/CTASection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { processSteps } from "@/lib/data/company";
-import { services } from "@/lib/data/services";
 
 export const metadata: Metadata = {
   title: "Услуги",
@@ -26,13 +25,7 @@ export default function ServicesPage() {
 
       <section className="bg-paper py-section">
         <Container>
-          <RevealGroup className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <RevealItem key={service.slug}>
-                <ServiceCard service={service} className="h-full" />
-              </RevealItem>
-            ))}
-          </RevealGroup>
+          <ServicesList />
         </Container>
       </section>
 

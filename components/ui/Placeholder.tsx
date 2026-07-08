@@ -16,6 +16,8 @@ type PlaceholderProps = {
   className?: string;
   /** Optional index number rendered in the bottom corner (for galleries). */
   index?: number;
+  /** Hide the bottom label caption (used when the placeholder is a background). */
+  hideCaption?: boolean;
 };
 
 const ratioClass: Record<NonNullable<PlaceholderProps["ratio"]>, string> = {
@@ -42,6 +44,7 @@ export function Placeholder({
   rounded = "rounded-3xl",
   className,
   index,
+  hideCaption = false,
 }: PlaceholderProps) {
   const shape = cn(
     "group relative overflow-hidden",
@@ -108,7 +111,7 @@ export function Placeholder({
           <path d="M2 54h60" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       </div>
-      <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 p-4">
+      <div className={cn("absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 p-4", hideCaption && "hidden")}>
         <span
           className={cn(
             "text-[0.7rem] font-medium uppercase tracking-[0.16em]",
