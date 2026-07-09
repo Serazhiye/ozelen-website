@@ -29,7 +29,7 @@ export const site = {
   },
   greenhouse: {
     label: "Тепличный комплекс",
-    lines: ["пос. Станционный", "Акмолинская область"],
+    lines: ["пос. Станционный", "Кокшетау городская администрация", "Акмолинская область"],
   },
   social: [{ label: "Instagram", href: "https://instagram.com/nord_botanic" }],
 } as const;

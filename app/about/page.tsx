@@ -8,7 +8,7 @@ import { Counter } from "@/components/motion/Counter";
 import { TeamGrid } from "@/components/team/TeamGrid";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { companyStats } from "@/lib/site";
-import { awards, certifications, milestones } from "@/lib/data/company";
+import { milestones } from "@/lib/data/company";
 
 export const metadata: Metadata = {
   title: "О компании",
@@ -123,47 +123,6 @@ export default function AboutPage() {
             className="max-w-2xl"
           />
           <TeamGrid columns={3} />
-        </Container>
-      </section>
-
-      {/* Awards & Certifications */}
-      <section className="bg-paper py-section">
-        <Container>
-          <div className="grid gap-16 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-7">
-              <SectionHeading eyebrow="Признание" title="Награды и достижения." />
-              <RevealGroup className="mt-12 space-y-0">
-                {awards.map((a) => (
-                  <RevealItem key={a.title}>
-                    <div className="flex items-baseline gap-6 border-t border-forest-900/10 py-5">
-                      <span className="w-14 shrink-0 text-sm font-medium tabular-nums text-forest-600">{a.year}</span>
-                      <div>
-                        <h3 className="text-base font-semibold text-ink">{a.title}</h3>
-                        <p className="text-sm text-ink/50">{a.body}</p>
-                      </div>
-                    </div>
-                  </RevealItem>
-                ))}
-              </RevealGroup>
-            </div>
-            <div className="lg:col-span-5">
-              <SectionHeading eyebrow="Сертификаты" title="Аккредитации и соответствие." />
-              <RevealGroup className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {certifications.map((c) => (
-                  <RevealItem key={c}>
-                    <div className="flex items-center gap-3 rounded-2xl border border-forest-900/8 bg-mist px-5 py-4">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-forest-900 text-sand-50">
-                        <svg className="h-3.5 w-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M3 8.5l3 3 7-7" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
-                      <span className="text-sm font-medium text-ink">{c}</span>
-                    </div>
-                  </RevealItem>
-                ))}
-              </RevealGroup>
-            </div>
-          </div>
         </Container>
       </section>
 

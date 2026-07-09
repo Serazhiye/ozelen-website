@@ -162,7 +162,7 @@ export default function ContactPage() {
           />
           <Reveal>
             <GoogleMap
-              query="Казахстан, Кокшетау, улица Валиханова 1/3"
+              query="Валиханова 1/3, Кокшетау, Акмолинская область, Казахстан"
               title="Офис Nord Botanic на карте Google"
               zoom={16}
               className="aspect-[16/10] w-full sm:aspect-[16/7]"
