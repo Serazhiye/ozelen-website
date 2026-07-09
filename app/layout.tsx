@@ -4,6 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { AdminProvider } from "@/components/admin/AdminProvider";
+import { ContentSync } from "@/components/admin/ContentSync";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -66,7 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     slogan: site.tagline,
     foundingDate: String(site.founded),
     telephone: site.contact.phone,
-    email: site.contact.email,
+    sameAs: [site.contact.instagramHref],
     address: {
       "@type": "PostalAddress",
       streetAddress: site.office.lines[0],
@@ -85,6 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Перейти к содержимому
         </a>
         <AdminProvider>
+          <ContentSync />
           <ScrollProgress />
           <Navbar />
           <main id="main">{children}</main>

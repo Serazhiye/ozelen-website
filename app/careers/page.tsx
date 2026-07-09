@@ -24,9 +24,8 @@ export default function CareersPage() {
         intro="Присоединяйтесь к междисциплинарной команде инженеров, ландшафтных архитекторов, экологов и руководителей участков, формирующих будущее городской зелёной инфраструктуры."
         crumbs={[{ label: "Главная", href: "/" }, { label: "Карьера" }]}
         meta={[
-          { label: "Команда", value: "350+" },
-          { label: "Дисциплин", value: "12" },
-          { label: "Офисов", value: "3" },
+          { label: "Команда", value: "60+" },
+          { label: "Офис", value: "1" },
           { label: "Открытых вакансий", value: String(openPositions.length) },
         ]}
       />
@@ -129,10 +128,12 @@ export default function CareersPage() {
                     </svg>
                   </a>
                   <a
-                    href={`mailto:careers@nordbotanic.kz`}
+                    href={site.contact.instagramHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-full border border-sand-100/25 px-7 py-4 text-sm font-medium text-sand-50 transition-colors hover:border-sand-100/50 hover:bg-white/5"
                   >
-                    careers@nordbotanic.kz
+                    Instagram {site.contact.instagram}
                   </a>
                 </div>
               </div>

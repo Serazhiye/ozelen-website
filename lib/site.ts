@@ -1,7 +1,5 @@
 /**
  * Центральная конфигурация сайта: данные о компании, контакты и навигация.
- * Всё «обрамление» (навигация, футер, контакты) берётся отсюда,
- * чтобы сайт оставался единообразным и легко перенастраивался.
  */
 
 export const site = {
@@ -9,38 +7,31 @@ export const site = {
   legalName: "Nord Botanic",
   tagline: "Создаём зелёные города.",
   description:
-    "Nord Botanic — городское озеленение и зелёная инфраструктура: парки, бульвары, полив, экологическое восстановление и собственный тепличный комплекс для государственных, коммерческих и институциональных заказчиков.",
+    "Nord Botanic — городское озеленение, зелёная инфраструктура и собственный тепличный комплекс с круглогодичной гидропоникой в Акмолинской области.",
   url: "https://nordbotanic.kz",
-  founded: 2007,
+  founded: 2021,
   contact: {
-    phone: "+7 (777) 123-45-67",
-    phoneHref: "tel:+77771234567",
-    whatsapp: "+7 (777) 123-45-67",
-    whatsappHref: "https://wa.me/77771234567",
-    email: "info@nordbotanic.kz",
-    emailHref: "mailto:info@nordbotanic.kz",
-    emergency: "+7 (777) 999-00-11",
-    emergencyHref: "tel:+77779990011",
+    phone: "+7 777 034 4857",
+    phoneHref: "tel:+77770344857",
+    whatsapp: "+7 777 034 4857",
+    whatsappHref: "https://wa.me/77770344857",
+    instagram: "@nord_botanic",
+    instagramHref: "https://instagram.com/nord_botanic",
   },
   office: {
-    label: "Головной офис",
+    label: "Офис",
     lines: ["ул. Валиханова, 1/3", "Кокшетау, Акмолинская область"],
     hours: [
-      { day: "Пн – Пт", time: "08:30 – 18:30" },
+      { day: "Пн – Пт", time: "09:00 – 18:00" },
       { day: "Суббота", time: "10:00 – 15:00" },
       { day: "Воскресенье", time: "Выходной" },
     ],
   },
   greenhouse: {
     label: "Тепличный комплекс",
-    lines: ["пос. Станционный", "Кокшетауская городская администрация", "Акмолинская область"],
+    lines: ["пос. Станционный", "Акмолинская область"],
   },
-  social: [
-    { label: "LinkedIn", href: "https://linkedin.com" },
-    { label: "Instagram", href: "https://instagram.com" },
-    { label: "YouTube", href: "https://youtube.com" },
-    { label: "Behance", href: "https://behance.net" },
-  ],
+  social: [{ label: "Instagram", href: "https://instagram.com/nord_botanic" }],
 } as const;
 
 export type NavItem = {
@@ -89,8 +80,8 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
 ];
 
 export const companyStats = [
-  { value: 430, suffix: "+", label: "Реализованных проектов" },
-  { value: 18, suffix: " лет", label: "Опыта работы" },
-  { value: 1.2, suffix: " млн", label: "Высажено деревьев", decimals: 1 },
-  { value: 350, suffix: "+", label: "Специалистов" },
+  { value: 11, suffix: "+", label: "Реализованных проектов" },
+  { value: 5, suffix: " лет", label: "На рынке" },
+  { value: 150000, suffix: "+", label: "Высажено растений" },
+  { value: 60, suffix: "+", label: "Специалистов" },
 ] as const;
