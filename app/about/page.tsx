@@ -8,12 +8,7 @@ import { Counter } from "@/components/motion/Counter";
 import { TeamGrid } from "@/components/team/TeamGrid";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { companyStats } from "@/lib/site";
-import {
-  awards,
-  certifications,
-  milestones,
-  values,
-} from "@/lib/data/company";
+import { awards, certifications, milestones } from "@/lib/data/company";
 
 export const metadata: Metadata = {
   title: "О компании",
@@ -27,13 +22,13 @@ export default function AboutPage() {
       <PageHero
         eyebrow="О Nord Botanic"
         title="Мы создаём ландшафты, по которым судят о городах."
-        intro="Основанная в 2007 году, Nord Botanic выросла из одной бригады в ведущего подрядчика региона по зелёной инфраструктуре — более 430 проектов, реализованных с дисциплиной инженерной компании и глазом ландшафтной студии."
+        intro="Основанная в 2021 году, Nord Botanic занимается городским озеленением, зелёной инфраструктурой и собственным тепличным производством — более 11 реализованных проектов, выполненных с дисциплиной инженерной компании и глазом ландшафтной студии."
         crumbs={[{ label: "Главная", href: "/" }, { label: "О компании" }]}
         meta={[
-          { label: "Основана", value: "2007" },
-          { label: "Проектов", value: "430+" },
-          { label: "Специалистов", value: "350+" },
-          { label: "Деревьев", value: "1,2 млн" },
+          { label: "Основана", value: "2021" },
+          { label: "Проектов", value: "11+" },
+          { label: "Специалистов", value: "60+" },
+          { label: "Растений", value: "150 000+" },
         ]}
       />
 
@@ -77,7 +72,7 @@ export default function AboutPage() {
               <Reveal key={stat.label}>
                 <div>
                   <dd className="text-5xl font-semibold tracking-tight sm:text-6xl">
-                    <Counter value={stat.value} suffix={stat.suffix} decimals={"decimals" in stat ? stat.decimals : 0} />
+                    <Counter value={stat.value} suffix={stat.suffix} decimals={0} />
                   </dd>
                   <dt className="mt-3 text-sm text-sand-100/60">{stat.label}</dt>
                 </div>
@@ -118,29 +113,8 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Values */}
-      <section className="bg-mist py-section">
-        <Container>
-          <SectionHeading
-            eyebrow="Наши принципы"
-            title="Ценности, которые держат на самых сложных проектах."
-            className="max-w-2xl"
-          />
-          <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map((v) => (
-              <RevealItem key={v.title}>
-                <div className="h-full rounded-3xl border border-forest-900/8 bg-paper p-8">
-                  <h3 className="text-lg font-semibold text-ink">{v.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink/55">{v.description}</p>
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </Container>
-      </section>
-
       {/* Safety & Environment */}
-      <section className="bg-paper py-section">
+      <section className="bg-mist py-section">
         <Container>
           <div className="grid gap-6 lg:grid-cols-2">
             <Reveal className="rounded-4xl bg-forest-950 p-10 text-sand-50 lg:p-14">
@@ -151,16 +125,6 @@ export default function AboutPage() {
               <p className="mt-5 leading-relaxed text-sand-100/70">
                 Каждый объект работает по сертифицированным системам охраны труда — с постоянным обучением, аудируемыми технологическими картами и руководством, для которого «ноль травм» не обсуждается.
               </p>
-              <div className="mt-8 grid grid-cols-2 gap-6 border-t border-sand-100/15 pt-8">
-                <div>
-                  <p className="text-3xl font-semibold">4,2 млн+</p>
-                  <p className="mt-1 text-sm text-sand-100/60">часов без происшествий</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-semibold">ISO 45001</p>
-                  <p className="mt-1 text-sm text-sand-100/60">Сертифицированная система</p>
-                </div>
-              </div>
             </Reveal>
 
             <Reveal delay={0.08} className="rounded-4xl border border-forest-900/8 bg-mist p-10 lg:p-14">
@@ -169,18 +133,8 @@ export default function AboutPage() {
                 Оставляем каждый участок лучше, чем нашли.
               </h3>
               <p className="mt-5 leading-relaxed text-ink/60">
-                Прирост биоразнообразия, измеримая экономия воды и низкоуглеродное исполнение заложены в каждый проект — и отражены в отчётности по чётким показателям, которые заказчик может уверенно раскрывать.
+                Прирост биоразнообразия, экономия воды и бережное исполнение заложены в каждый проект — от городского озеленения до гидропоники в теплице.
               </p>
-              <div className="mt-8 grid grid-cols-2 gap-6 border-t border-forest-900/10 pt-8">
-                <div>
-                  <p className="text-3xl font-semibold text-forest-800">+31%</p>
-                  <p className="mt-1 text-sm text-ink/55">Ср. прирост биоразнообразия</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-semibold text-forest-800">−42%</p>
-                  <p className="mt-1 text-sm text-ink/55">Ср. снижение расхода воды</p>
-                </div>
-              </div>
             </Reveal>
           </div>
         </Container>

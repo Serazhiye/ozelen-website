@@ -2,6 +2,7 @@ import { projects as defaultProjectsData } from "@/lib/data/projects";
 import { services as defaultServicesData } from "@/lib/data/services";
 import { articles as defaultArticles } from "@/lib/data/news";
 import { leadership } from "@/lib/data/company";
+import { pushContent } from "@/lib/sync";
 
 /**
  * Client-only content store for the admin CMS.
@@ -143,6 +144,14 @@ function read<T>(key: string, fallback: T): T {
   }
 }
 
+// localStorage key -> backend content key
+const CONTENT_KEY: Record<string, string> = {
+  [TEAM_KEY]: "team",
+  [PROJECTS_KEY]: "projects",
+  [PRESS_KEY]: "press",
+  [SERVICES_KEY]: "services",
+};
+
 function write<T>(key: string, value: T): void {
   if (typeof window === "undefined") return;
   try {
@@ -154,6 +163,8 @@ function write<T>(key: string, value: T): void {
     throw e;
   }
   window.dispatchEvent(new CustomEvent(STORE_EVENT));
+  const contentKey = CONTENT_KEY[key];
+  if (contentKey) pushContent(contentKey, value);
 }
 
 /* ---------- team ---------- */
@@ -213,6 +224,7 @@ export function setStaticImage(id: string, dataUrl: string | undefined): void {
     throw e;
   }
   window.dispatchEvent(new CustomEvent(STORE_EVENT));
+  pushContent("staticImages", map);
 }
 
 /** Create a URL-safe slug from a title (latin + digits). */

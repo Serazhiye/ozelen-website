@@ -52,8 +52,8 @@ export function Hero() {
             className="mt-8 max-w-xl text-lg leading-relaxed text-sand-100/75 text-pretty"
           >
             Проектируем, инженерно рассчитываем и строим парки, бульвары и зелёную
-            инфраструктуру городского масштаба для государства, застройщиков и
-            институтов — ландшафты, которые работают поколениями.
+            инфраструктуру городского масштаба — ландшафты, которые работают
+            поколениями.
           </motion.p>
 
           <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
@@ -84,7 +84,7 @@ export function Hero() {
                 <Counter
                   value={stat.value}
                   suffix={stat.suffix}
-                  decimals={"decimals" in stat ? stat.decimals : 0}
+                  decimals={0}
                 />
               </dd>
               <dt className="mt-2 text-sm text-sand-100/60">{stat.label}</dt>

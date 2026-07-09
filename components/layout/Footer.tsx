@@ -24,8 +24,8 @@ export function Footer() {
               <a href={site.contact.whatsappHref} className="block transition-colors hover:text-sand-50" target="_blank" rel="noopener noreferrer">
                 WhatsApp
               </a>
-              <a href={site.contact.emailHref} className="block transition-colors hover:text-sand-50">
-                {site.contact.email}
+              <a href={site.contact.instagramHref} className="block transition-colors hover:text-sand-50" target="_blank" rel="noopener noreferrer">
+                Instagram {site.contact.instagram}
               </a>
             </div>
           </div>

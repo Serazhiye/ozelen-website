@@ -53,7 +53,7 @@ export function Counter({
     return () => cancelAnimationFrame(raf);
   }, [inView, value, duration, reduce]);
 
-  const formatted = display.toLocaleString("en-US", {
+  const formatted = display.toLocaleString("ru-RU", {
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,
   });

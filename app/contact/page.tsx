@@ -5,18 +5,17 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GoogleMap } from "@/components/ui/GoogleMap";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { site } from "@/lib/site";
-import { departments } from "@/lib/data/company";
 
 export const metadata: Metadata = {
   title: "Контакты",
   description:
-    "Свяжитесь с Nord Botanic по вопросам проекта, тендера или партнёрства. WhatsApp, телефон, эл. почта, адреса офиса и тепличного комплекса на карте.",
+    "Свяжитесь с Nord Botanic. WhatsApp, телефон и Instagram, адреса офиса и тепличного комплекса на карте.",
 };
 
 const channels = [
   { label: "Телефон", value: site.contact.phone, href: site.contact.phoneHref },
   { label: "WhatsApp", value: "Написать", href: site.contact.whatsappHref, external: true },
-  { label: "Эл. почта", value: site.contact.email, href: site.contact.emailHref },
+  { label: "Instagram", value: site.contact.instagram, href: site.contact.instagramHref, external: true },
 ];
 
 export default function ContactPage() {
@@ -24,8 +23,8 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Контакты"
-        title="Обсудим ваш следующий ориентир."
-        intro="Планируете парк, бульвар или целый район — наша команда готова помочь. Напишите нам в WhatsApp, и мы ответим в течение одного рабочего дня."
+        title="Обсудим ваш следующий проект."
+        intro="Планируете озеленение, благоустройство или поставку салата из теплицы — напишите нам в WhatsApp, и мы ответим в течение одного рабочего дня."
         crumbs={[{ label: "Главная", href: "/" }, { label: "Контакты" }]}
       />
 
@@ -100,9 +99,9 @@ export default function ContactPage() {
                       </a>
                     </div>
                     <p className="mt-6 text-sm text-sand-100/50">
-                      Или на почту:{" "}
-                      <a href={site.contact.emailHref} className="text-sand-100/80 underline underline-offset-4 hover:text-sand-50">
-                        {site.contact.email}
+                      Мы в Instagram:{" "}
+                      <a href={site.contact.instagramHref} target="_blank" rel="noopener noreferrer" className="text-sand-100/80 underline underline-offset-4 hover:text-sand-50">
+                        {site.contact.instagram}
                       </a>
                     </p>
                   </div>
@@ -146,17 +145,6 @@ export default function ContactPage() {
                       ))}
                     </dl>
                   </div>
-
-                  {/* Emergency */}
-                  <div className="rounded-3xl bg-forest-950 p-7 text-sand-50 shadow-lift">
-                    <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-sand-200">Аварийная линия</h3>
-                    <p className="mt-3 text-sm text-sand-100/60">
-                      Для срочных инцидентов на действующих объектах Nord Botanic.
-                    </p>
-                    <a href={site.contact.emergencyHref} className="mt-4 inline-block text-xl font-semibold text-sand-50">
-                      {site.contact.emergency}
-                    </a>
-                  </div>
                 </div>
               </Reveal>
             </div>
@@ -164,37 +152,12 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      {/* Departments */}
+      {/* Map */}
       <section className="bg-paper py-section">
         <Container>
           <SectionHeading
-            eyebrow="Отделы"
-            title="Свяжитесь напрямую с нужной командой."
-            className="max-w-2xl"
-          />
-          <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2">
-            {departments.map((d) => (
-              <RevealItem key={d.name}>
-                <a
-                  href={`mailto:${d.email}`}
-                  className="group flex h-full flex-col rounded-3xl border border-forest-900/8 bg-mist p-7 shadow-subtle transition-all duration-500 hover:-translate-y-1 hover:border-forest-900/15 hover:shadow-lift"
-                >
-                  <h3 className="text-base font-semibold text-ink">{d.name}</h3>
-                  <p className="mt-1 text-sm text-ink/55">{d.description}</p>
-                  <span className="mt-4 text-sm font-medium text-forest-700 link-underline">{d.email}</span>
-                </a>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </Container>
-      </section>
-
-      {/* Map */}
-      <section className="bg-paper pb-section">
-        <Container>
-          <SectionHeading
             eyebrow="На карте"
-            title="Головной офис Nord Botanic."
+            title="Офис Nord Botanic."
             className="mb-10 max-w-2xl"
           />
           <Reveal>

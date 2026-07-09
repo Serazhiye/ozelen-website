@@ -25,9 +25,9 @@ export default function GreenhousePage() {
         size="lg"
         crumbs={[{ label: "Главная", href: "/" }, { label: "Теплица" }]}
         meta={[
-          { label: "Площадь теплиц", value: "24 000 м²" },
-          { label: "Материал в год", value: "1,5 млн" },
-          { label: "Видов и сортов", value: "240+" },
+          { label: "Площадь теплицы", value: "0,3 га" },
+          { label: "Культура", value: "Салаты" },
+          { label: "Технология", value: "Гидропоника" },
           { label: "Расположение", value: "пос. Станционный" },
         ]}
       />
@@ -165,9 +165,9 @@ export default function GreenhousePage() {
                 ))}
               </address>
               <p className="mt-6 text-sm text-ink/55">
-                По вопросам поставки посадочного материала:{" "}
-                <a href={site.contact.emailHref} className="font-medium text-forest-700 link-underline">
-                  {site.contact.email}
+                По вопросам поставки салата и сотрудничества:{" "}
+                <a href={site.contact.whatsappHref} target="_blank" rel="noopener noreferrer" className="font-medium text-forest-700 link-underline">
+                  WhatsApp {site.contact.phone}
                 </a>
               </p>
             </div>

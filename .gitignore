@@ -30,6 +30,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# CMS backend content (runtime data)
+/data
+
 # editor
 .vscode
 .idea

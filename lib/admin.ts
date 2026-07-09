@@ -1,4 +1,5 @@
 import { openPositions } from "@/lib/data/company";
+import { pushContent } from "@/lib/sync";
 
 /**
  * Client-side admin store.
@@ -42,6 +43,7 @@ export function savePositions(list: Position[]): void {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(POS_KEY, JSON.stringify(list));
   window.dispatchEvent(new CustomEvent(POSITIONS_EVENT));
+  pushContent("positions", list);
 }
 
 export function resetPositions(): void {
