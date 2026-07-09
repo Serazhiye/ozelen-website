@@ -80,7 +80,7 @@ export function Hero() {
         >
           {companyStats.map((stat) => (
             <motion.div key={stat.label} variants={item}>
-              <dd className="text-4xl font-semibold tracking-tight text-sand-50 sm:text-5xl">
+              <dd className="text-3xl font-semibold tracking-tight text-sand-50 sm:text-4xl">
                 <Counter
                   value={stat.value}
                   suffix={stat.suffix}
@@ -92,20 +92,6 @@ export function Hero() {
           ))}
         </motion.dl>
       </Container>
-
-      {/* Scroll hint */}
-      {!reduce && (
-        <motion.div
-          className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 lg:block"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          aria-hidden="true"
-        >
-          <div className="flex h-10 w-6 items-start justify-center rounded-full border border-sand-100/25 p-1.5">
-            <div className="h-2 w-1 rounded-full bg-sand-100/50" />
-          </div>
-        </motion.div>
-      )}
     </section>
   );
 }
