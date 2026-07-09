@@ -67,7 +67,7 @@ export default function AboutPage() {
       {/* Statistics */}
       <section className="bg-forest-950 py-section text-sand-50">
         <Container>
-          <dl className="grid grid-cols-2 gap-x-8 gap-y-12 lg:grid-cols-4">
+          <dl className="grid grid-cols-2 gap-x-8 gap-y-12 lg:grid-cols-5">
             {companyStats.map((stat) => (
               <Reveal key={stat.label}>
                 <div>
@@ -109,33 +109,6 @@ export default function AboutPage() {
                 </RevealItem>
               ))}
             </RevealGroup>
-          </div>
-        </Container>
-      </section>
-
-      {/* Safety & Environment */}
-      <section className="bg-mist py-section">
-        <Container>
-          <div className="grid gap-6 lg:grid-cols-2">
-            <Reveal className="rounded-4xl bg-forest-950 p-10 text-sand-50 lg:p-14">
-              <span className="eyebrow text-sand-200 before:bg-sand-300/50">Стандарты безопасности</span>
-              <h3 className="mt-6 text-3xl font-semibold tracking-tight text-balance">
-                Культура безопасности уровня отрасли.
-              </h3>
-              <p className="mt-5 leading-relaxed text-sand-100/70">
-                Каждый объект работает по сертифицированным системам охраны труда — с постоянным обучением, аудируемыми технологическими картами и руководством, для которого «ноль травм» не обсуждается.
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.08} className="rounded-4xl border border-forest-900/8 bg-mist p-10 lg:p-14">
-              <span className="eyebrow">Экологическая ответственность</span>
-              <h3 className="mt-6 text-3xl font-semibold tracking-tight text-ink text-balance">
-                Оставляем каждый участок лучше, чем нашли.
-              </h3>
-              <p className="mt-5 leading-relaxed text-ink/60">
-                Прирост биоразнообразия, экономия воды и бережное исполнение заложены в каждый проект — от городского озеленения до гидропоники в теплице.
-              </p>
-            </Reveal>
           </div>
         </Container>
       </section>

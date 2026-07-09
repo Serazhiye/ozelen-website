@@ -95,54 +95,6 @@ export default function GreenhousePage() {
         </Container>
       </section>
 
-      {/* Features */}
-      <section className="bg-paper py-section">
-        <Container>
-          <SectionHeading
-            eyebrow="Технологии"
-            title="Что делает комплекс современным."
-            className="max-w-2xl"
-          />
-          <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {greenhouse.features.map((f) => (
-              <RevealItem key={f.title}>
-                <div className="group h-full rounded-3xl border border-forest-900/8 bg-mist p-8 shadow-subtle transition-all duration-500 ease-out-expo hover:-translate-y-1.5 hover:shadow-lift">
-                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-paper text-3xl shadow-subtle transition-transform duration-500 ease-out-expo group-hover:-rotate-6 group-hover:scale-105" role="img" aria-hidden="true">
-                    {f.icon}
-                  </span>
-                  <h3 className="mt-6 text-lg font-semibold text-ink">{f.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/55">{f.description}</p>
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </Container>
-      </section>
-
-      {/* Process */}
-      <section className="bg-forest-950 py-section text-sand-50">
-        <Container>
-          <SectionHeading
-            dark
-            eyebrow="Цикл выращивания"
-            title="От семени до высадки — пять этапов."
-            className="max-w-2xl"
-          />
-          <RevealGroup className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {greenhouse.process.map((step) => (
-              <RevealItem key={step.number}>
-                <div className="flex h-full flex-col">
-                  <span className="text-sm font-medium tabular-nums text-sand-300/70">{step.number}</span>
-                  <div className="mt-3 h-px w-full bg-sand-100/15" />
-                  <h3 className="mt-5 text-lg font-semibold text-sand-50">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-sand-100/60">{step.description}</p>
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </Container>
-      </section>
-
       {/* Gallery */}
       <section className="bg-paper py-section">
         <Container>
