@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { GoogleMap } from "@/components/ui/GoogleMap";
 import { StaticPhoto, StaticGallery } from "@/components/photos/StaticPhoto";
 import { CTASection } from "@/components/sections/CTASection";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
@@ -108,31 +107,19 @@ export default function GreenhousePage() {
       {/* Address */}
       <section className="bg-mist py-section">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
-            <div className="lg:col-span-5">
-              <SectionHeading eyebrow="Расположение" title="Где находится комплекс." />
-              <address className="mt-8 not-italic text-lg leading-relaxed text-ink/70">
-                {site.greenhouse.lines.map((line) => (
-                  <span key={line} className="block">{line}</span>
-                ))}
-              </address>
-              <p className="mt-6 text-sm text-ink/55">
-                По вопросам поставки салата и сотрудничества:{" "}
-                <a href={site.contact.whatsappHref} target="_blank" rel="noopener noreferrer" className="font-medium text-forest-700 link-underline">
-                  WhatsApp {site.contact.phone}
-                </a>
-              </p>
-            </div>
-            <div className="lg:col-span-7">
-              <Reveal>
-                <GoogleMap
-                  query="Казахстан, Акмолинская область, посёлок Станционный"
-                  title="Тепличный комплекс Nord Botanic на карте Google"
-                  zoom={13}
-                  className="aspect-[16/11] w-full"
-                />
-              </Reveal>
-            </div>
+          <div className="max-w-2xl">
+            <SectionHeading eyebrow="Расположение" title="Где находится комплекс." />
+            <address className="mt-8 not-italic text-lg leading-relaxed text-ink/70">
+              {site.greenhouse.lines.map((line) => (
+                <span key={line} className="block">{line}</span>
+              ))}
+            </address>
+            <p className="mt-6 text-sm text-ink/55">
+              По вопросам поставки салата и сотрудничества:{" "}
+              <a href={site.contact.whatsappHref} target="_blank" rel="noopener noreferrer" className="font-medium text-forest-700 link-underline">
+                WhatsApp {site.contact.phone}
+              </a>
+            </p>
           </div>
         </Container>
       </section>
