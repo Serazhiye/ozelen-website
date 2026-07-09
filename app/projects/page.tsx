@@ -20,7 +20,7 @@ export default function ProjectsPage() {
         crumbs={[{ label: "Главная", href: "/" }, { label: "Проекты" }]}
         meta={[
           { label: "Проектов", value: "11+" },
-          { label: "Высажено растений", value: "150 000+" },
+          { label: "Высажено растений", value: "150 тыс.+" },
         ]}
       />
 

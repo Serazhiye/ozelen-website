@@ -6,7 +6,7 @@ import { StaticGallery } from "@/components/photos/StaticPhoto";
 import { TeamGrid } from "@/components/team/TeamGrid";
 import { CareersPositions } from "@/components/careers/CareersPositions";
 import { RevealGroup, RevealItem, Reveal } from "@/components/motion/Reveal";
-import { careerBenefits, openPositions } from "@/lib/data/company";
+import { careerBenefits } from "@/lib/data/company";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -23,11 +23,6 @@ export default function CareersPage() {
         title="Стройте ландшафты, которые переживут всех нас."
         intro="Присоединяйтесь к междисциплинарной команде инженеров, ландшафтных архитекторов, экологов и руководителей участков, формирующих будущее городской зелёной инфраструктуры."
         crumbs={[{ label: "Главная", href: "/" }, { label: "Карьера" }]}
-        meta={[
-          { label: "Команда", value: "60+" },
-          { label: "Офис", value: "1" },
-          { label: "Открытых вакансий", value: String(openPositions.length) },
-        ]}
       />
 
       {/* Why join (first section) */}

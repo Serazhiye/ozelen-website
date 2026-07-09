@@ -28,7 +28,7 @@ export default function AboutPage() {
           { label: "Основана", value: "2021" },
           { label: "Проектов", value: "11+" },
           { label: "Специалистов", value: "60+" },
-          { label: "Растений", value: "150 000+" },
+          { label: "Растений", value: "150 тыс.+" },
         ]}
       />
 

@@ -82,6 +82,6 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
 export const companyStats = [
   { value: 11, suffix: "+", label: "Реализованных проектов" },
   { value: 5, suffix: " лет", label: "На рынке" },
-  { value: 150000, suffix: "+", label: "Высажено растений" },
+  { value: 150, suffix: " тыс.+", label: "Высажено растений" },
   { value: 60, suffix: "+", label: "Специалистов" },
 ] as const;

@@ -74,29 +74,8 @@ export default function GreenhousePage() {
         </Container>
       </section>
 
-      {/* What we grow */}
-      <section className="bg-mist py-section">
-        <Container>
-          <SectionHeading
-            eyebrow="Что мы выращиваем"
-            title="Посадочный материал под каждый проект."
-            className="max-w-2xl"
-          />
-          <RevealGroup className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {greenhouse.grows.map((item) => (
-              <RevealItem key={item.label}>
-                <div className="group flex h-full flex-col items-center justify-center rounded-3xl border border-forest-900/8 bg-paper p-6 text-center shadow-subtle transition-all duration-500 ease-out-expo hover:-translate-y-1.5 hover:shadow-lift">
-                  <span className="text-4xl transition-transform duration-500 ease-out-expo group-hover:-rotate-6 group-hover:scale-110" role="img" aria-hidden="true">{item.icon}</span>
-                  <span className="mt-4 text-sm font-medium text-ink">{item.label}</span>
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </Container>
-      </section>
-
       {/* Features */}
-      <section className="bg-paper py-section">
+      <section className="bg-mist py-section">
         <Container>
           <SectionHeading
             eyebrow="Технологии"
