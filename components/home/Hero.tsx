@@ -77,6 +77,27 @@ export function Hero() {
             </Button>
           </motion.div>
         </motion.div>
+
+        {/* Animated statistics */}
+        <motion.dl
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="mt-20 grid grid-cols-2 gap-8 border-t border-sand-100/15 pt-10 sm:mt-24 lg:grid-cols-5"
+        >
+          {companyStats.map((stat) => (
+            <motion.div key={stat.label} variants={item}>
+              <dd className="text-4xl font-semibold tracking-tight text-sand-50 sm:text-5xl">
+                <Counter
+                  value={stat.value}
+                  suffix={stat.suffix}
+                  decimals={0}
+                />
+              </dd>
+              <dt className="mt-2 text-sm text-sand-100/60">{stat.label}</dt>
+            </motion.div>
+          ))}
+        </motion.dl>
       </Container>
 
       {/* Animated statistics — stretched across the full screen width */}
