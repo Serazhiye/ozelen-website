@@ -71,7 +71,7 @@ export default function AboutPage() {
             {companyStats.map((stat) => (
               <Reveal key={stat.label}>
                 <div>
-                  <dd className="text-5xl font-semibold tracking-tight sm:text-6xl">
+                  <dd className="text-4xl font-semibold tracking-tight sm:text-5xl">
                     <Counter value={stat.value} suffix={stat.suffix} decimals={0} />
                   </dd>
                   <dt className="mt-3 text-sm text-sand-100/60">{stat.label}</dt>
@@ -87,7 +87,7 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             eyebrow="Наша история"
-            title="Почти два десятилетия работы в городском масштабе."
+            title="Пять лет работы в городском масштабе."
             intro="Каждая веха — шаг от бригады озеленения к интегрированному инженеру зелёной инфраструктуры."
             className="max-w-2xl"
           />

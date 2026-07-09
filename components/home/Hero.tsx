@@ -22,10 +22,14 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-forest-950 text-sand-50">
-      {/* Background photo (replaceable from admin) + darkening overlays */}
+    <section className="relative overflow-hidden bg-forest-950 text-sand-50">
+      {/* Background photo (replaceable from admin "Фото" → «Главный кадр»).
+          The section height is driven by the in-flow content wrapper below, so
+          this absolute layer reliably covers the WHOLE section. One even, light
+          overlay keeps the photo visible everywhere (incl. behind the text and
+          stats), slightly darker at the bottom only for text legibility. */}
       <StaticPhoto id="home-hero" fill dark hideCaption rounded="rounded-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/50 to-forest-950/75" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-t from-forest-950/85 via-forest-950/55 to-forest-950/35" aria-hidden="true" />
       <motion.div
         aria-hidden="true"
         className="pointer-events-none absolute -right-40 top-10 h-[42rem] w-[42rem] rounded-full bg-forest-500/15 blur-3xl"
@@ -33,8 +37,11 @@ export function Hero() {
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <Container className="relative z-10 pb-16 pt-40 lg:pb-24">
-        <motion.div variants={container} initial="hidden" animate="show" className="max-w-5xl">
+      {/* In-flow content wrapper — carries the full-height layout */}
+      <div className="relative z-10 flex min-h-[100svh] flex-col">
+      {/* Copy — pinned to the left */}
+      <Container className="flex flex-1 items-end pb-12 pt-40 lg:pb-16">
+        <motion.div variants={container} initial="hidden" animate="show" className="mr-auto max-w-3xl text-left">
           <motion.span variants={item} className="eyebrow text-sand-200 before:bg-sand-300/50">
             Городское озеленение и зелёная инфраструктура
           </motion.span>
@@ -93,19 +100,27 @@ export function Hero() {
         </motion.dl>
       </Container>
 
-      {/* Scroll hint */}
-      {!reduce && (
-        <motion.div
-          className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 lg:block"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          aria-hidden="true"
-        >
-          <div className="flex h-10 w-6 items-start justify-center rounded-full border border-sand-100/25 p-1.5">
-            <div className="h-2 w-1 rounded-full bg-sand-100/50" />
-          </div>
-        </motion.div>
-      )}
+      {/* Animated statistics — stretched across the full screen width */}
+      <motion.dl
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="grid w-full grid-cols-2 border-t border-sand-100/15 sm:grid-cols-3 lg:grid-cols-5"
+      >
+        {companyStats.map((stat) => (
+          <motion.div
+            key={stat.label}
+            variants={item}
+            className="flex flex-col justify-center px-6 py-8 sm:px-8 lg:border-l lg:border-sand-100/10 lg:py-10 lg:first:border-l-0"
+          >
+            <dd className="text-3xl font-semibold tracking-tight text-sand-50 sm:text-4xl">
+              <Counter value={stat.value} suffix={stat.suffix} decimals={0} />
+            </dd>
+            <dt className="mt-2 text-sm text-sand-100/60">{stat.label}</dt>
+          </motion.div>
+        ))}
+      </motion.dl>
+      </div>
     </section>
   );
 }

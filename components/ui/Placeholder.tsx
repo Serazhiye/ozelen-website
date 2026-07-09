@@ -47,8 +47,12 @@ export function Placeholder({
   hideCaption = false,
 }: PlaceholderProps) {
   const shape = cn(
-    "group relative overflow-hidden",
-    fill ? "absolute inset-0 h-full w-full" : "w-full",
+    "group overflow-hidden",
+    // In fill mode use `absolute inset-0` so we stretch to the full height of
+    // the parent via offsets (NOT `h-full`, which resolves against the parent's
+    // min-height and clips a taller section). Must NOT also carry `relative`,
+    // or the two position utilities collide and `relative` wins.
+    fill ? "absolute inset-0" : "relative w-full",
     !fill && ratioClass[ratio],
     rounded,
     className,
@@ -74,7 +78,10 @@ export function Placeholder({
         <img
           src={src}
           alt={label}
-          className="h-full w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
+          className={cn(
+            "object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]",
+            fill ? "absolute inset-0 h-full w-full" : "h-full w-full",
+          )}
         />
         {numberBadge}
       </div>

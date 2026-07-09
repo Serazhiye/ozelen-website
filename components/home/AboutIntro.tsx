@@ -20,7 +20,7 @@ export function AboutIntro() {
             <SectionHeading
               eyebrow="Кто мы"
               title="Ландшафтная компания, работающая по стандартам инженерного бюро."
-              intro="Почти два десятилетия Nord Botanic создаёт парки, бульвары и зелёные системы, определяющие облик городов, — сочетая ландшафтное мастерство со строгостью гражданской инженерии."
+              intro="Пять лет Nord Botanic создаёт парки, бульвары и зелёные системы, определяющие облик городов, — сочетая ландшафтное мастерство со строгостью гражданской инженерии."
             />
 
             <Reveal delay={0.15}>
@@ -51,7 +51,7 @@ export function AboutIntro() {
             <Reveal delay={0.1} className="relative">
               <StaticPhoto id="home-portrait" ratio="portrait" rounded="rounded-4xl" />
               <div className="absolute -bottom-6 -left-6 hidden rounded-3xl border border-forest-900/8 bg-paper p-7 shadow-lift sm:block">
-                <p className="text-4xl font-semibold tracking-tight text-forest-800">18</p>
+                <p className="text-4xl font-semibold tracking-tight text-forest-800">5</p>
                 <p className="mt-1 max-w-[9rem] text-sm text-ink/55">лет создаём зелёные города</p>
               </div>
             </Reveal>
