@@ -22,10 +22,11 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-forest-950 text-sand-50">
-      {/* Background photo (replaceable from admin) + darkening overlays */}
+    <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-forest-950 text-sand-50">
+      {/* Background photo (replaceable from admin "Фото" → «Главный кадр») + light darkening */}
       <StaticPhoto id="home-hero" fill dark hideCaption rounded="rounded-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/50 to-forest-950/75" aria-hidden="true" />
+      <div className="absolute inset-0 bg-forest-950/35" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/30 to-transparent" aria-hidden="true" />
       <motion.div
         aria-hidden="true"
         className="pointer-events-none absolute -right-40 top-10 h-[42rem] w-[42rem] rounded-full bg-forest-500/15 blur-3xl"
@@ -33,8 +34,9 @@ export function Hero() {
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <Container className="relative z-10 pb-16 pt-40 lg:pb-24">
-        <motion.div variants={container} initial="hidden" animate="show" className="max-w-5xl">
+      {/* Copy — pinned to the left */}
+      <Container className="relative z-10 flex flex-1 items-end pb-12 pt-40 lg:pb-16">
+        <motion.div variants={container} initial="hidden" animate="show" className="mr-auto max-w-3xl text-left">
           <motion.span variants={item} className="eyebrow text-sand-200 before:bg-sand-300/50">
             Городское озеленение и зелёная инфраструктура
           </motion.span>
@@ -70,28 +72,28 @@ export function Hero() {
             </Button>
           </motion.div>
         </motion.div>
-
-        {/* Animated statistics */}
-        <motion.dl
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="mt-20 grid grid-cols-2 gap-8 border-t border-sand-100/15 pt-10 sm:mt-24 lg:grid-cols-5"
-        >
-          {companyStats.map((stat) => (
-            <motion.div key={stat.label} variants={item}>
-              <dd className="text-3xl font-semibold tracking-tight text-sand-50 sm:text-4xl">
-                <Counter
-                  value={stat.value}
-                  suffix={stat.suffix}
-                  decimals={0}
-                />
-              </dd>
-              <dt className="mt-2 text-sm text-sand-100/60">{stat.label}</dt>
-            </motion.div>
-          ))}
-        </motion.dl>
       </Container>
+
+      {/* Animated statistics — stretched across the full screen width */}
+      <motion.dl
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 grid w-full grid-cols-2 border-t border-sand-100/15 sm:grid-cols-3 lg:grid-cols-5"
+      >
+        {companyStats.map((stat) => (
+          <motion.div
+            key={stat.label}
+            variants={item}
+            className="flex flex-col justify-center px-6 py-8 sm:px-8 lg:border-l lg:border-sand-100/10 lg:py-10 lg:first:border-l-0"
+          >
+            <dd className="text-3xl font-semibold tracking-tight text-sand-50 sm:text-4xl">
+              <Counter value={stat.value} suffix={stat.suffix} decimals={0} />
+            </dd>
+            <dt className="mt-2 text-sm text-sand-100/60">{stat.label}</dt>
+          </motion.div>
+        ))}
+      </motion.dl>
     </section>
   );
 }
