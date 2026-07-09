@@ -22,11 +22,14 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-forest-950 text-sand-50">
-      {/* Background photo (replaceable from admin "Фото" → «Главный кадр») + light darkening */}
+    <section className="relative overflow-hidden bg-forest-950 text-sand-50">
+      {/* Background photo (replaceable from admin "Фото" → «Главный кадр»).
+          The section height is driven by the in-flow content wrapper below, so
+          this absolute layer reliably covers the WHOLE section. One even, light
+          overlay keeps the photo visible everywhere (incl. behind the text and
+          stats), slightly darker at the bottom only for text legibility. */}
       <StaticPhoto id="home-hero" fill dark hideCaption rounded="rounded-none" />
-      <div className="absolute inset-0 bg-forest-950/35" aria-hidden="true" />
-      <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/30 to-transparent" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-t from-forest-950/85 via-forest-950/55 to-forest-950/35" aria-hidden="true" />
       <motion.div
         aria-hidden="true"
         className="pointer-events-none absolute -right-40 top-10 h-[42rem] w-[42rem] rounded-full bg-forest-500/15 blur-3xl"
@@ -34,8 +37,10 @@ export function Hero() {
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
 
+      {/* In-flow content wrapper — carries the full-height layout */}
+      <div className="relative z-10 flex min-h-[100svh] flex-col">
       {/* Copy — pinned to the left */}
-      <Container className="relative z-10 flex flex-1 items-end pb-12 pt-40 lg:pb-16">
+      <Container className="flex flex-1 items-end pb-12 pt-40 lg:pb-16">
         <motion.div variants={container} initial="hidden" animate="show" className="mr-auto max-w-3xl text-left">
           <motion.span variants={item} className="eyebrow text-sand-200 before:bg-sand-300/50">
             Городское озеленение и зелёная инфраструктура
@@ -79,7 +84,7 @@ export function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 grid w-full grid-cols-2 border-t border-sand-100/15 sm:grid-cols-3 lg:grid-cols-5"
+        className="grid w-full grid-cols-2 border-t border-sand-100/15 sm:grid-cols-3 lg:grid-cols-5"
       >
         {companyStats.map((stat) => (
           <motion.div
@@ -94,6 +99,7 @@ export function Hero() {
           </motion.div>
         ))}
       </motion.dl>
+      </div>
     </section>
   );
 }
