@@ -83,5 +83,6 @@ export const companyStats = [
   { value: 11, suffix: "+", label: "Реализованных проектов" },
   { value: 5, suffix: " лет", label: "На рынке" },
   { value: 150000, suffix: "+", label: "Высажено растений" },
+  { value: 50, suffix: " тыс. га", label: "Пространства озеленено" },
   { value: 60, suffix: "+", label: "Специалистов" },
 ] as const;
