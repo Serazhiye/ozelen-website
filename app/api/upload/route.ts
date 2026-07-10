@@ -39,9 +39,16 @@ export async function POST(req: Request) {
       await deleteImageByUrl(old).catch(() => {});
     }
     return NextResponse.json({ url });
-  } catch {
-    return NextResponse.json({ error: "upload failed" }, { status: 500 });
-  }
+  } catch (error) {
+  console.error("Upload error:", error);
+
+  return NextResponse.json(
+    {
+      error: error instanceof Error ? error.message : String(error),
+    },
+    { status: 500 }
+  );
+}
 }
 
 /** Delete a stored image by its public URL. Body: { url }. */
