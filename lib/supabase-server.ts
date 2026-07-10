@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 /**
@@ -6,11 +7,14 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
  * service-role key is never sent to the browser.
  */
 
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+// Trim env values: a stray space/newline in the URL or bucket name is a common
+// cause of Storage's "Invalid path specified in request URL" (it becomes part
+// of the object path). Trimming removes that whole class of failure.
+const SUPABASE_URL = process.env.SUPABASE_URL?.trim();
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
 
 /** Public Storage bucket that holds uploaded site images. */
-export const STORAGE_BUCKET = process.env.SUPABASE_STORAGE_BUCKET || "site-images";
+export const STORAGE_BUCKET = (process.env.SUPABASE_STORAGE_BUCKET || "site-images").trim();
 
 let cachedClient: SupabaseClient | null = null;
 

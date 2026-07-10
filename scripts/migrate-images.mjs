@@ -9,6 +9,7 @@
  *
  * Optional: SUPABASE_STORAGE_BUCKET (defaults to "site-images").
  */
+import { randomUUID } from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
 
 const URL = process.env.SUPABASE_URL;
@@ -30,8 +31,8 @@ async function uploadDataUrl(dataUrl) {
   if (!m) return dataUrl;
   const contentType = m[1];
   const bytes = Buffer.from(m[2], "base64");
-  const ext = contentType === "image/webp" ? "webp" : contentType.split("/")[1] || "bin";
-  const name = `uploads/${Date.now()}-${Math.random().toString(36).slice(2, 10)}.${ext}`;
+  const ext = (contentType.split("/")[1] || "bin").replace(/[^a-z0-9]/gi, "").toLowerCase() || "bin";
+  const name = `uploads/${randomUUID()}.${ext}`;
   const { error } = await db.storage.from(BUCKET).upload(name, bytes, {
     contentType,
     cacheControl: "31536000",
