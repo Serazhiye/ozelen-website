@@ -8,23 +8,35 @@ function adminHeaders(): Record<string, string> {
   return token ? { "x-admin-token": token } : {};
 }
 
+type UploadResult =
+  | { ok: true; url: string }
+  | { ok: false; notConfigured: true }
+  | { ok: false; notConfigured: false; error: string };
+
 /**
- * Upload the compressed image to Supabase Storage via /api/upload and return
- * the public URL. `old` (the URL being replaced) is deleted server-side after
- * a successful upload. Returns null if Storage is unavailable so the caller
- * can fall back to an inline data URL.
+ * Upload the compressed image to Supabase Storage via /api/upload.
+ * `old` (the URL being replaced) is deleted server-side after a successful
+ * upload. Distinguishes "Storage not configured" (503 → caller falls back to a
+ * data URL) from real failures (error surfaced to the admin, no silent fallback).
  */
-async function uploadToStorage(blob: Blob, type: string, old?: string): Promise<string | null> {
+async function uploadToStorage(blob: Blob, type: string, old?: string): Promise<UploadResult> {
   try {
     const fd = new FormData();
     fd.append("file", blob, type === "image/webp" ? "image.webp" : "image.jpg");
     if (old) fd.append("old", old);
     const res = await fetch("/api/upload", { method: "POST", body: fd, headers: adminHeaders() });
-    if (!res.ok) return null;
-    const data = (await res.json()) as { url?: string };
-    return typeof data.url === "string" ? data.url : null;
-  } catch {
-    return null;
+
+    if (res.ok) {
+      const data = (await res.json()) as { url?: string };
+      if (typeof data.url === "string") return { ok: true, url: data.url };
+      return { ok: false, notConfigured: false, error: "Сервер не вернул URL изображения" };
+    }
+    if (res.status === 503) return { ok: false, notConfigured: true };
+
+    const data = (await res.json().catch(() => null)) as { error?: string } | null;
+    return { ok: false, notConfigured: false, error: data?.error || `Ошибка загрузки (HTTP ${res.status})` };
+  } catch (e) {
+    return { ok: false, notConfigured: false, error: e instanceof Error ? e.message : "Сеть недоступна" };
   }
 }
 
@@ -41,8 +53,9 @@ function deleteFromStorage(url?: string) {
 /**
  * Upload / preview / remove control for a single image.
  * Images are compressed to WebP and uploaded to Supabase Storage; only the URL
- * is stored in the CMS. When Storage isn't configured it falls back to an inline
- * data URL so local dev keeps working. Existing base64 values still render.
+ * is stored in the CMS. When Storage isn't configured (503) it falls back to an
+ * inline data URL so local dev keeps working; real Storage errors are shown to
+ * the admin instead of being silently swallowed. Existing base64 values render.
  */
 export function ImageField({
   label,
@@ -57,21 +70,26 @@ export function ImageField({
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleFile = async (file?: File) => {
     if (!file) return;
     setBusy(true);
+    setError(null);
     try {
       const { blob, type } = await fileToCompressedBlob(file);
-      const url = await uploadToStorage(blob, type, value);
-      if (url) {
-        onChange(url);
-      } else {
-        // Storage unavailable — keep working with an inline data URL.
+      const result = await uploadToStorage(blob, type, value);
+      if (result.ok) {
+        onChange(result.url);
+      } else if (result.notConfigured) {
+        // Storage genuinely not configured (local dev) — keep working inline.
         onChange(await blobToDataUrl(blob));
+      } else {
+        // Real failure — surface it, don't hide it behind a base64 fallback.
+        setError(result.error);
       }
-    } catch {
-      // ignore
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Не удалось обработать изображение");
     } finally {
       setBusy(false);
       if (inputRef.current) inputRef.current.value = "";
@@ -80,6 +98,7 @@ export function ImageField({
 
   const handleRemove = () => {
     deleteFromStorage(value);
+    setError(null);
     onChange(undefined);
   };
 
@@ -115,6 +134,11 @@ export function ImageField({
           </button>
         )}
       </div>
+      {error && (
+        <p className="mt-2 text-xs text-red-600" role="alert">
+          Не удалось загрузить в хранилище: {error}
+        </p>
+      )}
       <input
         ref={inputRef}
         type="file"

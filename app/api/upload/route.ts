@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
-import { uploadImage, deleteImageByUrl, getSupabaseAdmin } from "@/lib/supabase-server";
+import {
+  uploadImage,
+  deleteImageByUrl,
+  getSupabaseAdmin,
+  STORAGE_BUCKET,
+} from "@/lib/supabase-server";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -9,6 +14,39 @@ function authorized(req: Request): boolean {
   const token = process.env.ADMIN_TOKEN;
   if (!token) return true;
   return req.headers.get("x-admin-token") === token;
+}
+
+/**
+ * Diagnostics: GET /api/upload reports whether Storage is configured.
+ * GET /api/upload?selftest=1 uploads a tiny test image and deletes it,
+ * returning the real Storage error if anything fails — the fastest way to see
+ * the actual root cause without going through the admin file picker.
+ */
+export async function GET(req: Request) {
+  if (!authorized(req)) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+
+  const configured = !!getSupabaseAdmin();
+  const status = { configured, bucket: STORAGE_BUCKET };
+
+  const url = new URL(req.url);
+  if (url.searchParams.get("selftest") !== "1") return NextResponse.json(status);
+
+  if (!configured) {
+    return NextResponse.json({ ...status, selftest: "skipped: storage not configured" }, { status: 503 });
+  }
+  // 1x1 transparent PNG.
+  const png = Buffer.from(
+    "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    "base64",
+  );
+  try {
+    const publicUrl = await uploadImage(new Uint8Array(png), "image/png");
+    await deleteImageByUrl(publicUrl).catch(() => {});
+    return NextResponse.json({ ...status, selftest: "ok", sampleUrl: publicUrl });
+  } catch (e) {
+    const message = e instanceof Error ? e.message : String(e);
+    return NextResponse.json({ ...status, selftest: "failed", error: message }, { status: 500 });
+  }
 }
 
 /**
