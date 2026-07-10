@@ -37,32 +37,20 @@ export async function uploadImage(
   const db = getSupabaseAdmin();
   if (!db) throw new Error("Supabase not configured");
 
-  const ext =
-    contentType === "image/webp"
-      ? "webp"
-      : contentType.split("/")[1] || "bin";
+  // A UUID key is guaranteed valid (no spaces/edge cases) and collision-free —
+  // unlike the previous timestamp+Math.random() scheme, which could produce an
+  // empty segment and an invalid object path.
+  const ext = (contentType.split("/")[1] || "bin").replace(/[^a-z0-9]/gi, "").toLowerCase() || "bin";
+  const name = `uploads/${randomUUID()}.${ext}`;
 
-  const name = `uploads/${Date.now()}-${Math.random()
-    .toString(36)
-    .slice(2, 10)}.${ext}`;
+  const { error } = await db.storage.from(STORAGE_BUCKET).upload(name, bytes, {
+    contentType,
+    cacheControl: "31536000",
+    upsert: false,
+  });
+  if (error) throw error;
 
-  const result = await db.storage
-    .from(STORAGE_BUCKET)
-    .upload(name, bytes, {
-      contentType,
-      cacheControl: "31536000",
-      upsert: false,
-    });
-
-  console.log("UPLOAD RESULT:", JSON.stringify(result, null, 2));
-
-  if (result.error) {
-    throw new Error(JSON.stringify(result.error));
-  }
-
-  return db.storage
-    .from(STORAGE_BUCKET)
-    .getPublicUrl(name).data.publicUrl;
+  return db.storage.from(STORAGE_BUCKET).getPublicUrl(name).data.publicUrl;
 }
 
 /** Extract the in-bucket path from one of our public URLs; null if not ours. */
