@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { getSupabaseAdmin } from "@/lib/supabase-server";
 
 /**
  * Server-side content persistence for the admin CMS.
@@ -19,22 +19,6 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
  */
 
 const TABLE = "content";
-
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-let cachedClient: SupabaseClient | null = null;
-
-/** Lazily build the Supabase client; returns null when not configured. */
-function getSupabase(): SupabaseClient | null {
-  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) return null;
-  if (!cachedClient) {
-    cachedClient = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
-      auth: { persistSession: false, autoRefreshToken: false },
-    });
-  }
-  return cachedClient;
-}
 
 // ---- Filesystem fallback ------------------------------------------------
 
@@ -62,7 +46,7 @@ async function writeFileContent(key: string, value: unknown): Promise<void> {
 
 /** Read every editable collection as a single { key: value } object. */
 export async function readContent(): Promise<Record<string, unknown>> {
-  const db = getSupabase();
+  const db = getSupabaseAdmin();
   if (!db) return readFileContent();
 
   const { data, error } = await db.from(TABLE).select("key, value");
@@ -77,7 +61,7 @@ export async function readContent(): Promise<Record<string, unknown>> {
 
 /** Upsert a single collection by key. */
 export async function writeContentKey(key: string, value: unknown): Promise<void> {
-  const db = getSupabase();
+  const db = getSupabaseAdmin();
   if (!db) return writeFileContent(key, value);
 
   const { error } = await db

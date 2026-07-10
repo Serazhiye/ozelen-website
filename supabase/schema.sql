@@ -25,3 +25,12 @@ drop trigger if exists content_touch_updated_at on public.content;
 create trigger content_touch_updated_at
   before update on public.content
   for each row execute function public.touch_updated_at();
+
+-- Public Storage bucket for uploaded site images.
+-- Images are compressed to WebP client-side, uploaded via /api/upload (server,
+-- service-role key), and served from the public URL. Upload/delete bypass RLS
+-- via the service role, so no extra storage policies are needed; the bucket is
+-- public so the <img> URLs load without auth.
+insert into storage.buckets (id, name, public)
+values ('site-images', 'site-images', true)
+on conflict (id) do nothing;
