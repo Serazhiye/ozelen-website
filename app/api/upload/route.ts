@@ -39,8 +39,12 @@ export async function POST(req: Request) {
       await deleteImageByUrl(old).catch(() => {});
     }
     return NextResponse.json({ url });
-  } catch {
-    return NextResponse.json({ error: "upload failed" }, { status: 500 });
+  } catch (e) {
+    // Surface the real Storage error (e.g. "Invalid path…") instead of masking
+    // it, so misconfiguration is diagnosable from the client and logs.
+    const message = e instanceof Error ? e.message : "upload failed";
+    console.error("[api/upload] upload failed:", message);
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
 
